@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_register"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.henallux.smartcities.RegisterActivity">
+
+    <TextView
+        android:text="@string/lastnameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lastnameText"
+        android:layout_alignBaseline="@+id/lastNameEditText"
+        android:layout_alignBottom="@+id/lastNameEditText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/lastNameEditText"
+        android:layout_toStartOf="@+id/lastNameEditText" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text=""
+        android:ems="10"
+        android:id="@+id/lastNameEditText"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:selectAllOnFocus="false" />
+
+    <TextView
+        android:text="@string/firstnameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/firstnameText"
+        android:layout_alignBaseline="@+id/firstTextEditText"
+        android:layout_alignBottom="@+id/firstTextEditText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/firstTextEditText"
+        android:layout_toStartOf="@+id/firstTextEditText" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text=""
+        android:ems="10"
+        android:id="@+id/firstTextEditText"
+        android:layout_below="@+id/lastNameEditText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="@string/mailText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mailText"
+        android:layout_alignBaseline="@+id/mailEditText"
+        android:layout_alignBottom="@+id/mailEditText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/mailEditText"
+        android:layout_toStartOf="@+id/mailEditText" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:layout_below="@+id/firstTextEditText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/mailEditText" />
+
+    <TextView
+        android:text="@string/phoneText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/phoneText"
+        android:layout_alignBaseline="@+id/phoneEditText"
+        android:layout_alignBottom="@+id/phoneEditText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:ems="10"
+        android:layout_below="@+id/mailEditText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/phoneEditText" />
+
+
+</RelativeLayout>

@@ -22,7 +22,8 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="250dp"
+        android:layout_margin="15px"
         app:srcCompat="@android:color/black"
         android:id="@+id/appLogo"
         android:layout_below="@+id/welcomeText"/>
@@ -31,6 +32,39 @@
         android:id="@+id/appName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/appLogo"
-        android:text="@string/app_name"/>
+        android:text="@string/app_name"
+        android:layout_below="@+id/appLogo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:id="@+id/presentationText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/presentationText"
+        android:layout_below="@+id/appName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/connexionButton"
+        android:id="@+id/buttonConnexion"
+        android:layout_below="@+id/presentationText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/inscriptionButton"
+        android:id="@+id/button2"
+        android:layout_below="@+id/buttonConnexion"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"/>
+
+
 </RelativeLayout>

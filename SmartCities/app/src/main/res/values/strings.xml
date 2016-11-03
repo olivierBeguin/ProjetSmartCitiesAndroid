@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">SmartCities</string>
     <string name="textWelcome">Welcome on</string>
+    <string name="connexionButton">Log in</string>
+    <string name="inscriptionButton">Register</string>
+    <string name="presentationText">The assistance intergenerationnal app of Namur</string>
+    <string name="lastnameText">Lastname</string>
+    <string name="firstnameText">Firstname</string>
+    <string name="mailText">Mail</string>
+    <string name="phoneText">Phone</string>
 </resources>
