@@ -8,4 +8,10 @@
     <string name="firstnameText">Firstname</string>
     <string name="mailText">Mail</string>
     <string name="phoneText">Phone</string>
+    <string name="streetText">Street</string>
+    <string name="postalCodeText">Postal Code</string>
+    <string name="cityText">City</string>
+    <string name="validateButton">Validate</string>
+    <string name="numberText">Number</string>
+    <string name="countryText">Country</string>
 </resources>
