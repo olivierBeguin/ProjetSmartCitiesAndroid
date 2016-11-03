@@ -14,4 +14,6 @@
     <string name="validateButton">Validate</string>
     <string name="numberText">Number</string>
     <string name="countryText">Country</string>
+    <string name="offer_a_serviceButton">Offer a service</string>
+    <string name="search_a_serviceButton">Search a service</string>
 </resources>
