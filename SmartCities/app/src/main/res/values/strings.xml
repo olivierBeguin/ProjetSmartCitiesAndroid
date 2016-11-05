@@ -16,4 +16,7 @@
     <string name="countryText">Country</string>
     <string name="offer_a_serviceButton">Offer a service</string>
     <string name="search_a_serviceButton">Search a service</string>
+    <string name="owner_service">Owner service :</string>
+    <string name="service_title">service title</string>
+    <string name="validate">Validate</string>
 </resources>
