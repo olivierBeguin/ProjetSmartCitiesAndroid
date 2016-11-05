@@ -35,7 +35,7 @@
     </RelativeLayout>
 
     <Button
-        android:background="@drawable/profilIcon"
+        android:background="@drawable/profil_icon"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:id="@+id/button4"
