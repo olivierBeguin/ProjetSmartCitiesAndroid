@@ -23,4 +23,7 @@
     <string name="password">Password</string>
     <string name="open">Open</string>
     <string name="connectionButton">Connection</string>
+    <string name="my_activities">My Activities</string>
+    <string name="my_comments">My Comments</string>
+    <string name="modifyButton">Modify</string>
 </resources>
