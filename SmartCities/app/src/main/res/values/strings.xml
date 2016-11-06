@@ -19,7 +19,7 @@
     <string name="owner_service">Owner service :</string>
     <string name="service_title">service title</string>
     <string name="validate">Validate</string>
-    <string name="mail_adress">Mail adress</string>
+    <string name="mail_address">Mail address</string>
     <string name="password">Password</string>
     <string name="open">Open</string>
     <string name="connectionButton">Connection</string>
