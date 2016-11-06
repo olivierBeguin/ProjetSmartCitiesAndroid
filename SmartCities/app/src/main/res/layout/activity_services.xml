@@ -16,20 +16,20 @@
         android:layout_centerVertical="true">
 
         <Button
-            android:text="@string/offer_a_serviceButton"
+            android:text="@string/search_a_serviceButton"
             android:layout_width="250dp"
             android:layout_height="150dp"
-            android:id="@+id/button3"
-            android:layout_below="@+id/button"
+            android:id="@+id/offerServiceButton"
+            android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
         <Button
-            android:text="@string/search_a_serviceButton"
+            android:text="@string/offer_a_serviceButton"
             android:layout_width="250dp"
             android:layout_height="150dp"
-            android:id="@+id/button"
-            android:layout_alignParentTop="true"
+            android:id="@+id/searchServiceButton"
+            android:layout_below="@+id/offerServiceButton"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
     </RelativeLayout>
@@ -38,7 +38,7 @@
         android:background="@drawable/profil_icon"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:id="@+id/button4"
+        android:id="@+id/profilButtonService"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
