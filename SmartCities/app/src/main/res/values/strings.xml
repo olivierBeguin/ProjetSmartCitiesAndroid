@@ -11,7 +11,7 @@
     <string name="streetText">Street</string>
     <string name="postalCodeText">Postal Code</string>
     <string name="cityText">City</string>
-    <string name="validateButton">Validate</string>
+    <string name="registerButton">Register</string>
     <string name="numberText">Number</string>
     <string name="countryText">Country</string>
     <string name="offer_a_serviceButton">Offer a service</string>
@@ -19,4 +19,11 @@
     <string name="owner_service">Owner service :</string>
     <string name="service_title">service title</string>
     <string name="validate">Validate</string>
+    <string name="mail_address">Mail address</string>
+    <string name="password">Password</string>
+    <string name="open">Open</string>
+    <string name="connectionButton">Connection</string>
+    <string name="my_activities">My Activities</string>
+    <string name="my_comments">My Comments</string>
+    <string name="modifyButton">Modify</string>
 </resources>

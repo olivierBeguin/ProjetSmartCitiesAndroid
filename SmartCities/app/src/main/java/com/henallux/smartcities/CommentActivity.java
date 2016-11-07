@@ -3,11 +3,13 @@ package com.henallux.smartcities;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class CommentActivity extends AppCompatActivity {
+public class CommentActivity extends AppCompatActivity
+{
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_services);
+        setContentView(R.layout.activity_comment);
     }
 }
