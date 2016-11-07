@@ -23,7 +23,8 @@
         <activity android:name=".ConnectionActivity" />
         <activity android:name=".SeeCommentActivity" />
         <activity android:name=".SearchServiceActivity" />
-        <activity android:name=".ProfilActivity"></activity>
+        <activity android:name=".ProfilActivity" />
+        <activity android:name=".LayoutActivity"/>
     </application>
 
 </manifest>

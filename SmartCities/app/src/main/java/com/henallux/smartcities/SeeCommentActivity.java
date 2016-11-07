@@ -2,8 +2,9 @@ package com.henallux.smartcities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 
-public class SeeCommentActivity extends AppCompatActivity
+public class SeeCommentActivity extends LayoutActivity
 {
 
     @Override
@@ -12,4 +13,5 @@ public class SeeCommentActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_see_comment);
     }
+
 }

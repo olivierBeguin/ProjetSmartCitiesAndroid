@@ -22,7 +22,8 @@
             android:id="@+id/offerServiceButton"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            style="@style/btnColor"/>
 
         <Button
             android:text="@string/offer_a_serviceButton"
@@ -31,16 +32,8 @@
             android:id="@+id/searchServiceButton"
             android:layout_below="@+id/offerServiceButton"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            style="@style/btnColor"/>
     </RelativeLayout>
-
-    <Button
-        android:background="@drawable/profil_icon"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:id="@+id/profilButtonService"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

@@ -11,27 +11,18 @@
     tools:context="com.henallux.smartcities.OfferServiceActivity">
 
     <Button
-        android:background="@drawable/profil_icon"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:id="@+id/profilButtonOfferService"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <Button
         android:text="@string/validate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/validateButton"
         android:layout_below="@+id/relativeLayout2"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        style="@style/btnColor"/>
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/relativeLayout2"
-        android:layout_below="@+id/profilButtonOfferService"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
@@ -72,7 +63,8 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            android:background="@color/colorAccent"/>
 
     </RelativeLayout>
 

@@ -1,9 +1,8 @@
 package com.henallux.smartcities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class OfferServiceActivity extends AppCompatActivity
+public class OfferServiceActivity extends LayoutActivity
 {
 
     @Override

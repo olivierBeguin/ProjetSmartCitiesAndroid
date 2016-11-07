@@ -3,10 +3,12 @@ package com.henallux.smartcities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-public class ServicesActivity extends AppCompatActivity
+public class ServicesActivity extends LayoutActivity
 {
 
     private Button searchServiceButton, offerServiceButton;
@@ -42,5 +44,7 @@ public class ServicesActivity extends AppCompatActivity
         Intent intent = new Intent(ServicesActivity.this, OfferServiceActivity.class);
         startActivity(intent);
     }
+
+
 
 }

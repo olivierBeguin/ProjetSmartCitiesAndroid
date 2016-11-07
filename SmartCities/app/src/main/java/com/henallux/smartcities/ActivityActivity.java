@@ -1,17 +1,15 @@
 package com.henallux.smartcities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class ActivityActivity extends AppCompatActivity
+
+public class ActivityActivity extends LayoutActivity
 {
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_activity);
     }
-
-
 }
