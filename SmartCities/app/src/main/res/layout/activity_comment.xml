@@ -10,79 +10,83 @@
     android:paddingTop="16dp"
     tools:context="com.henallux.smartcities.CommentActivity">
 
-
-    <EditText
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="First name , last name"
-        android:ems="9"
-        android:id="@+id/ownerServiceEditText"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:id="@+id/LayoutText">
 
-    <TextView
-        android:text="@string/owner_service"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ownerServiceText"
-        android:layout_alignBaseline="@+id/ownerServiceEditText"
-        android:layout_alignBottom="@+id/ownerServiceEditText"
-        android:layout_toLeftOf="@+id/ownerServiceEditText"
-        android:layout_toStartOf="@+id/ownerServiceEditText" />
+        <TextView
+            android:text="@string/owner_service"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ownerServiceText"
+            android:layout_alignBaseline="@+id/ownerServiceEditText"
+            android:layout_alignBottom="@+id/ownerServiceEditText" />
 
-    <TextView
-        android:text="@string/service_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:id="@+id/serviceTitleText"
-        android:layout_below="@+id/ownerServiceEditText"
-        android:layout_toLeftOf="@+id/editText9"
-        android:layout_toStartOf="@+id/editText9" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="Nom, prenom"
+            android:ems="9"
+            android:id="@+id/ownerServiceEditText"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:textAlignment="viewEnd"
+            android:gravity="end"/>
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="TITLE"
-        android:ems="10"
-        android:id="@+id/editText9"
-        android:layout_alignBaseline="@+id/serviceTitleText"
-        android:layout_alignBottom="@+id/serviceTitleText"
-        android:layout_alignLeft="@+id/ownerServiceEditText"
-        android:layout_alignStart="@+id/ownerServiceEditText" />
+        <TextView
+            android:text="@string/service_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:id="@+id/serviceTitleText"
+            android:layout_below="@+id/ownerServiceEditText"/>
 
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="TITLE"
+            android:ems="10"
+            android:id="@+id/serviceEditText"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/ownerServiceEditText"
+            android:textAlignment="viewEnd"
+            android:gravity="end"/>
 
-    <Button
-        android:text="@string/validate"
-        android:layout_width="200dp"
-        android:layout_height="80dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/serviceTitleText"
-        android:layout_alignStart="@+id/serviceTitleText"
-        android:id="@+id/button6"
-        style="@style/btnColor"/>
+    </RelativeLayout>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
         android:ems="10"
-        android:id="@+id/editText12"
-        android:layout_below="@+id/editText9"
+        android:id="@+id/commentText"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="false"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_above="@+id/ratingBar"
-        android:background="@color/colorAccent" />
+        android:background="@color/colorAccent"
+        android:layout_below="@id/LayoutText" />
 
     <RatingBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ratingBar"
-        android:layout_above="@+id/button6"
+        android:layout_above="@+id/validateButtonComment"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="@string/validate"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
+        android:id="@+id/validateButtonComment"
+        style="@style/btnColor"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
 
 </RelativeLayout>

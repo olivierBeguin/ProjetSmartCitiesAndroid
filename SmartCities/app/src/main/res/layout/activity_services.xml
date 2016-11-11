@@ -16,7 +16,7 @@
         android:layout_centerVertical="true">
 
         <Button
-            android:text="@string/search_a_serviceButton"
+            android:text="@string/offer_a_serviceButton"
             android:layout_width="250dp"
             android:layout_height="150dp"
             android:id="@+id/offerServiceButton"
@@ -26,7 +26,7 @@
             style="@style/btnColor"/>
 
         <Button
-            android:text="@string/offer_a_serviceButton"
+            android:text="@string/search_a_serviceButton"
             android:layout_width="250dp"
             android:layout_height="150dp"
             android:id="@+id/searchServiceButton"

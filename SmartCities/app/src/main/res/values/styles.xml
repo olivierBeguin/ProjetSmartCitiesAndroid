@@ -14,8 +14,10 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"></style>
 
     <style name="btnColor">
         <item name="android:backgroundTint" parent="android:Button" tools:targetApi="lollipop">@color/colorButton</item>
@@ -25,6 +27,5 @@
     <style name="spinnerStyle">
         <item name="android:background">@color/colorAccent</item>
     </style>
-
 
 </resources>

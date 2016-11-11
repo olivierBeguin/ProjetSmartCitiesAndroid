@@ -52,7 +52,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/connexionButton"
+        android:text="@string/connectionButton"
         android:id="@+id/connectionButtonMain"
         android:layout_below="@+id/presentationText"
         android:layout_alignParentLeft="true"
@@ -64,7 +64,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/inscriptionButton"
+        android:text="@string/registerButton"
         android:id="@+id/registerButtonMain"
         android:layout_below="@+id/connectionButtonMain"
         android:layout_alignParentLeft="true"

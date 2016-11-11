@@ -2,10 +2,11 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+
     <item
         android:id="@+id/services"
         android:icon="@drawable/activity_icon"
-        android:title="@string/myActivity"
+        android:title="@string/my_activities"
         app:showAsAction="ifRoom"
         />
 
