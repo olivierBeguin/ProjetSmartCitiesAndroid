@@ -27,4 +27,6 @@
     <string name="modifyButton">Modifier</string>
     <string name="profil">Profil</string>
     <string name="name_of_service">Nom du service</string>
+    <string name="save_button">Sauvegarder</string>
+    <string name="imagelogo">imageLogo</string>
 </resources>

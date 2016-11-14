@@ -43,12 +43,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/lastnameTextProfil"
-                android:layout_alignBaseline="@+id/lastNameEditTextProfil"
-                android:layout_alignBottom="@+id/lastNameEditTextProfil"
+                android:layout_alignBaseline="@+id/lastnameEditTextProfil"
+                android:layout_alignBottom="@+id/lastnameEditTextProfil"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_toLeftOf="@+id/lastNameEditTextProfil"
-                android:layout_toStartOf="@+id/lastNameEditTextProfil" />
+                android:layout_toLeftOf="@+id/lastnameEditTextProfil"
+                android:layout_toStartOf="@+id/lastnameEditTextProfil" />
 
             <EditText
                 android:layout_width="wrap_content"
@@ -56,23 +56,24 @@
                 android:inputType="textPersonName"
                 android:text=""
                 android:ems="10"
-                android:id="@+id/lastNameEditTextProfil"
+                android:id="@+id/lastnameEditTextProfil"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                android:selectAllOnFocus="false" />
+                android:selectAllOnFocus="false"
+                android:enabled="false"/>
 
             <TextView
                 android:text="@string/firstnameText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/firstnameTextProfil"
-                android:layout_alignBaseline="@+id/firstTextEditTextProfil"
-                android:layout_alignBottom="@+id/firstTextEditTextProfil"
+                android:layout_alignBaseline="@+id/firstnameTextEditTextProfil"
+                android:layout_alignBottom="@+id/firstnameTextEditTextProfil"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_toLeftOf="@+id/firstTextEditTextProfil"
-                android:layout_toStartOf="@+id/firstTextEditTextProfil" />
+                android:layout_toLeftOf="@+id/firstnameTextEditTextProfil"
+                android:layout_toStartOf="@+id/firstnameTextEditTextProfil" />
 
             <EditText
                 android:layout_width="wrap_content"
@@ -80,10 +81,11 @@
                 android:inputType="textPersonName"
                 android:text=""
                 android:ems="10"
-                android:id="@+id/firstTextEditTextProfil"
-                android:layout_below="@+id/lastNameEditTextProfil"
+                android:id="@+id/firstnameTextEditTextProfil"
+                android:layout_below="@+id/lastnameEditTextProfil"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+                android:layout_alignParentEnd="true"
+                android:enabled="false"/>
 
             <TextView
                 android:text="@string/mailText"
@@ -102,10 +104,11 @@
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
                 android:ems="10"
-                android:layout_below="@+id/firstTextEditTextProfil"
+                android:layout_below="@+id/firstnameTextEditTextProfil"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                android:id="@+id/mailEditTextProfil" />
+                android:id="@+id/mailEditTextProfil"
+                android:enabled="false"/>
 
             <TextView
                 android:text="@string/phoneText"
@@ -127,7 +130,8 @@
                 android:layout_below="@+id/mailEditTextProfil"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                android:id="@+id/phoneEditTextProfil" />
+                android:id="@+id/phoneEditTextProfil"
+                android:enabled="false"/>
 
             <TextView
                 android:text="@string/streetText"
@@ -149,7 +153,8 @@
                 android:id="@+id/streetEditTextProfil"
                 android:layout_below="@+id/phoneEditTextProfil"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+                android:layout_alignParentEnd="true"
+                android:enabled="false"/>
 
             <TextView
                 android:text="@string/numberText"
@@ -171,7 +176,8 @@
                 android:id="@+id/numEditTextProfil"
                 android:layout_below="@+id/streetEditTextProfil"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+                android:layout_alignParentEnd="true"
+                android:enabled="false"/>
 
             <TextView
                 android:text="@string/postalCodeText"
@@ -193,7 +199,8 @@
                 android:id="@+id/postalCodeEditTextProfil"
                 android:layout_below="@+id/numEditTextProfil"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+                android:layout_alignParentEnd="true"
+                android:enabled="false"/>
 
             <TextView
                 android:text="@string/cityText"
@@ -215,7 +222,8 @@
                 android:layout_below="@+id/postalCodeEditTextProfil"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                android:id="@+id/cityEditTextProfil" />
+                android:id="@+id/cityEditTextProfil"
+                android:enabled="false"/>
 
             <TextView
                 android:text="@string/countryText"
@@ -237,7 +245,8 @@
                 android:id="@+id/countryTextEditProfil"
                 android:layout_below="@+id/cityEditTextProfil"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+                android:layout_alignParentEnd="true"
+                android:enabled="false"/>
 
             <Button
                 android:layout_width="wrap_content"
@@ -245,6 +254,7 @@
                 android:layout_below="@id/countryTextEditProfil"
                 android:text="@string/modifyButton"
                 android:layout_centerHorizontal="true"
+                android:id="@+id/modify_button"
                 style="@style/btnColor"/>
 
         </RelativeLayout>
