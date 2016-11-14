@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_modif_profil"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.henallux.smartcities.ModifProfilActivity">
+
+    <TextView
+        android:text="@string/lastnameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lastnameTextProfil"
+        android:layout_alignBaseline="@+id/lastnameEditTextProfil"
+        android:layout_alignBottom="@+id/lastnameEditTextProfil"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/lastnameEditTextProfil"
+        android:layout_toStartOf="@+id/lastnameEditTextProfil" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text=""
+        android:ems="10"
+        android:id="@+id/lastnameEditTextProfil"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:selectAllOnFocus="false"/>
+
+    <TextView
+        android:text="@string/firstnameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/firstnameTextProfil"
+        android:layout_alignBaseline="@+id/firstnameTextEditTextProfil"
+        android:layout_alignBottom="@+id/firstnameTextEditTextProfil"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/firstnameTextEditTextProfil"
+        android:layout_toStartOf="@+id/firstnameTextEditTextProfil" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text=""
+        android:ems="10"
+        android:id="@+id/firstnameTextEditTextProfil"
+        android:layout_below="@+id/lastnameEditTextProfil"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+
+    <TextView
+        android:text="@string/mailText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mailTextProfil"
+        android:layout_alignBaseline="@+id/mailEditTextProfil"
+        android:layout_alignBottom="@+id/mailEditTextProfil"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/mailEditTextProfil"
+        android:layout_toStartOf="@+id/mailEditTextProfil" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:layout_below="@+id/firstnameTextEditTextProfil"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/mailEditTextProfil"
+        android:enabled="false"/>
+
+    <TextView
+        android:text="@string/phoneText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/phoneTextProfil"
+        android:layout_alignBaseline="@+id/phoneEditTextProfil"
+        android:layout_alignBottom="@+id/phoneEditTextProfil"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/phoneEditTextProfil"
+        android:layout_toStartOf="@+id/phoneEditTextProfil" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:ems="10"
+        android:layout_below="@+id/mailEditTextProfil"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/phoneEditTextProfil"
+        android:enabled="false"/>
+
+    <TextView
+        android:text="@string/streetText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/streetTextProfil"
+        android:layout_alignBaseline="@+id/streetEditTextProfil"
+        android:layout_alignBottom="@+id/streetEditTextProfil"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/streetEditTextProfil"
+        android:layout_toStartOf="@+id/streetEditTextProfil" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPostalAddress"
+        android:ems="10"
+        android:id="@+id/streetEditTextProfil"
+        android:layout_below="@+id/phoneEditTextProfil"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:enabled="false"/>
+
+    <TextView
+        android:text="@string/numberText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/numTextProfil"
+        android:layout_alignBaseline="@+id/numEditTextProfil"
+        android:layout_alignBottom="@+id/numEditTextProfil"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/numEditTextProfil"
+        android:layout_toStartOf="@+id/numEditTextProfil" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/numEditTextProfil"
+        android:layout_below="@+id/streetEditTextProfil"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="@string/postalCodeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/postalCodeTextProfil"
+        android:layout_alignBaseline="@+id/postalCodeEditTextProfil"
+        android:layout_alignBottom="@+id/postalCodeEditTextProfil"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/postalCodeEditTextProfil"
+        android:layout_toStartOf="@+id/postalCodeEditTextProfil" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/postalCodeEditTextProfil"
+        android:layout_below="@+id/numEditTextProfil"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="@string/cityText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cityTextProfil"
+        android:layout_alignBaseline="@+id/cityEditTextProfil"
+        android:layout_alignBottom="@+id/cityEditTextProfil"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/cityEditTextProfil"
+        android:layout_toStartOf="@+id/cityEditTextProfil" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10"
+        android:layout_below="@+id/postalCodeEditTextProfil"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/cityEditTextProfil" />
+
+    <TextView
+        android:text="@string/countryText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/countryTextProfil"
+        android:layout_alignBaseline="@+id/countryTextEditProfil"
+        android:layout_alignBottom="@+id/countryTextEditProfil"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/countryTextEditProfil"
+        android:layout_toStartOf="@+id/countryTextEditProfil" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10"
+        android:id="@+id/countryTextEditProfil"
+        android:layout_below="@+id/cityEditTextProfil"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/countryTextEditProfil"
+        android:text="@string/save_button"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/save_button"
+        style="@style/btnColor"/>
+
+</RelativeLayout>
+
