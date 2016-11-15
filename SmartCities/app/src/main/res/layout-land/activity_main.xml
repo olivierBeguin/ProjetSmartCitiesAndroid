@@ -90,13 +90,6 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
-        <!--<fragment
-            tools:layout="@layout/activity_fragment_main"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/fragmentmain"
-            android:name="com.henallux.smartcities.FragmentMainActivity"
-            android:layout_centerVertical="true"/>-->
     </RelativeLayout>
 
 

@@ -1,15 +1,15 @@
-package Model;
+package com.henallux.smartcities.model;
 
 import java.io.Serializable;
 import java.util.Date;
 
 public class User implements Serializable
 {
-    private String firstname, lastname, password, mailAdress, phoneNumber, street, city, country;
+    private String firstname, lastname, password, mailAdress, phoneNumber, street, city, country, postalCode, houseNumber;
     private Date inscriptionDate;
-    private Integer postalCode, houseNumber, sumServiceDone, sumServiceGiven;
+    private Integer sumServiceDone, sumServiceGiven;
 
-    public User(String firstname, String lastname, String password, String mailAdress, String phoneNumber, String street, String city, String country, Date inscriptionDate, Integer postalCode, Integer houseNumber, Integer sumServiceDone, Integer sumServiceGiven)
+    public User(String firstname, String lastname, String password, String mailAdress, String phoneNumber, String street, String city, String country, Date inscriptionDate, String postalCode, String houseNumber, Integer sumServiceDone, Integer sumServiceGiven)
     {
         this.firstname = firstname;
         this.lastname = lastname;
@@ -24,6 +24,23 @@ public class User implements Serializable
         this.houseNumber = houseNumber;
         this.sumServiceDone = sumServiceDone;
         this.sumServiceGiven = sumServiceGiven;
+    }
+
+    public User(String firstname, String lastname, String password, String mailAdress, String phoneNumber, String street, String city, String country, Date inscriptionDate, String postalCode, String houseNumber)
+    {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.password = password;
+        this.mailAdress = mailAdress;
+        this.phoneNumber = phoneNumber;
+        this.postalCode = postalCode;
+        this.street = street;
+        this.city = city;
+        this.country = country;
+        this.inscriptionDate = inscriptionDate;
+        this.houseNumber = houseNumber;
+        this.sumServiceDone = 0;
+        this.sumServiceGiven = 0;
     }
 
     public String getFirstname()
@@ -116,22 +133,22 @@ public class User implements Serializable
         this.inscriptionDate = inscriptionDate;
     }
 
-    public Integer getPostalCode()
+    public String getPostalCode()
     {
         return postalCode;
     }
 
-    public void setPostalCode(Integer postalCode)
+    public void setPostalCode(String postalCode)
     {
         this.postalCode = postalCode;
     }
 
-    public Integer getHouseNumber()
+    public String getHouseNumber()
     {
         return houseNumber;
     }
 
-    public void setHouseNumber(Integer houseNumber)
+    public void setHouseNumber(String houseNumber)
     {
         this.houseNumber = houseNumber;
     }
@@ -151,8 +168,6 @@ public class User implements Serializable
         return sumServiceGiven;
     }
 
-    public void setSumServiceGiven(Integer sumServiceGiven)
-    {
-        this.sumServiceGiven = sumServiceGiven;
-    }
+    public void setSumServiceGiven(Integer sumServiceGiven) { this.sumServiceGiven = sumServiceGiven; }
+
 }

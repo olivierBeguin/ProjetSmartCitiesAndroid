@@ -17,13 +17,13 @@
             android:text="@string/lastnameText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/lastnameText"
-            android:layout_alignBaseline="@+id/lastNameEditText"
-            android:layout_alignBottom="@+id/lastNameEditText"
+            android:id="@+id/lastnameTextRegister"
+            android:layout_alignBaseline="@+id/lastnameEditTextRegister"
+            android:layout_alignBottom="@+id/lastnameEditTextRegister"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_toLeftOf="@+id/lastNameEditText"
-            android:layout_toStartOf="@+id/lastNameEditText" />
+            android:layout_toLeftOf="@+id/lastnameEditTextRegister"
+            android:layout_toStartOf="@+id/lastnameEditTextRegister" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -31,7 +31,7 @@
             android:inputType="textPersonName"
             android:text=""
             android:ems="10"
-            android:id="@+id/lastNameEditText"
+            android:id="@+id/lastnameEditTextRegister"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
@@ -41,13 +41,13 @@
             android:text="@string/firstnameText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/firstnameText"
-            android:layout_alignBaseline="@+id/firstTextEditText"
-            android:layout_alignBottom="@+id/firstTextEditText"
+            android:id="@+id/firstnameTextRegister"
+            android:layout_alignBaseline="@+id/firstnameTextEditTextRegister"
+            android:layout_alignBottom="@+id/firstnameTextEditTextRegister"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_toLeftOf="@+id/firstTextEditText"
-            android:layout_toStartOf="@+id/firstTextEditText" />
+            android:layout_toLeftOf="@+id/firstnameTextEditTextRegister"
+            android:layout_toStartOf="@+id/firstnameTextEditTextRegister" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -55,8 +55,8 @@
             android:inputType="textPersonName"
             android:text=""
             android:ems="10"
-            android:id="@+id/firstTextEditText"
-            android:layout_below="@+id/lastNameEditText"
+            android:id="@+id/firstnameTextEditTextRegister"
+            android:layout_below="@+id/lastnameEditTextRegister"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
 
@@ -64,65 +64,109 @@
             android:text="@string/mailText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/mailText"
-            android:layout_alignBaseline="@+id/mailEditText"
-            android:layout_alignBottom="@+id/mailEditText"
+            android:id="@+id/mailTextRegister"
+            android:layout_alignBaseline="@+id/mailEditTextRegister"
+            android:layout_alignBottom="@+id/mailEditTextRegister"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_toLeftOf="@+id/mailEditText"
-            android:layout_toStartOf="@+id/mailEditText" />
+            android:layout_toLeftOf="@+id/mailEditTextRegister"
+            android:layout_toStartOf="@+id/mailEditTextRegister" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:ems="10"
-            android:layout_below="@+id/firstTextEditText"
+            android:layout_below="@+id/firstnameTextEditTextRegister"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:id="@+id/mailEditText" />
+            android:id="@+id/mailEditTextRegister" />
+
+        <TextView
+            android:text="@string/password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/passwordTextRegister"
+            android:layout_alignBaseline="@+id/passwordEditTextRegister"
+            android:layout_alignBottom="@+id/passwordEditTextRegister"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@+id/passwordEditTextRegister"
+            android:layout_toStartOf="@+id/passwordEditTextRegister"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:layout_below="@+id/mailEditTextRegister"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/passwordEditTextRegister"/>
+
+        <TextView
+            android:text="@string/confirm_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/confirm_password"
+            android:layout_alignBaseline="@+id/confirmPasswordEditTextRegister"
+            android:layout_alignBottom="@+id/confirmPasswordEditTextRegister"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@+id/confirmPasswordEditTextRegister"
+            android:layout_toStartOf="@+id/confirmPasswordEditTextRegister"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:layout_below="@+id/passwordEditTextRegister"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/confirmPasswordEditTextRegister"/>
 
         <TextView
             android:text="@string/phoneText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/phoneText"
-            android:layout_alignBaseline="@+id/phoneEditText"
-            android:layout_alignBottom="@+id/phoneEditText"
+            android:id="@+id/phoneTextRegister"
+            android:layout_alignBaseline="@+id/phoneEditTextRegister"
+            android:layout_alignBottom="@+id/phoneEditTextRegister"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_toLeftOf="@+id/phoneEditText"
-            android:layout_toStartOf="@+id/phoneEditText" />
+            android:layout_toLeftOf="@+id/phoneEditTextRegister"
+            android:layout_toStartOf="@+id/phoneEditTextRegister" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="phone"
             android:ems="10"
-            android:layout_below="@+id/mailEditText"
+            android:layout_below="@+id/confirmPasswordEditTextRegister"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:id="@+id/phoneEditText" />
+            android:id="@+id/phoneEditTextRegister" />
 
         <TextView
             android:text="@string/streetText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/streetText"
-            android:layout_alignBaseline="@+id/streetEditText"
-            android:layout_alignBottom="@+id/streetEditText"
+            android:id="@+id/streetTextRegister"
+            android:layout_alignBaseline="@+id/streetEditTextRegister"
+            android:layout_alignBottom="@+id/streetEditTextRegister"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_toLeftOf="@+id/streetEditText"
-            android:layout_toStartOf="@+id/streetEditText" />
+            android:layout_toLeftOf="@+id/streetEditTextRegister"
+            android:layout_toStartOf="@+id/streetEditTextRegister" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPostalAddress"
             android:ems="10"
-            android:id="@+id/streetEditText"
-            android:layout_below="@+id/phoneEditText"
+            android:id="@+id/streetEditTextRegister"
+            android:layout_below="@+id/phoneEditTextRegister"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
 
@@ -130,21 +174,21 @@
             android:text="@string/numberText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/numText"
-            android:layout_alignBaseline="@+id/numEditText"
-            android:layout_alignBottom="@+id/numEditText"
+            android:id="@+id/numTextRegister"
+            android:layout_alignBaseline="@+id/numEditTextRegister"
+            android:layout_alignBottom="@+id/numEditTextRegister"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_toLeftOf="@+id/numEditText"
-            android:layout_toStartOf="@+id/numEditText" />
+            android:layout_toLeftOf="@+id/numEditTextRegister"
+            android:layout_toStartOf="@+id/numEditTextRegister" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/numEditText"
-            android:layout_below="@+id/streetEditText"
+            android:id="@+id/numEditTextRegister"
+            android:layout_below="@+id/streetEditTextRegister"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
 
@@ -152,21 +196,21 @@
             android:text="@string/postalCodeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/postalCodeText"
-            android:layout_alignBaseline="@+id/postalCodeEditText"
-            android:layout_alignBottom="@+id/postalCodeEditText"
+            android:id="@+id/postalCodeTextRegister"
+            android:layout_alignBaseline="@+id/postalCodeEditTextRegister"
+            android:layout_alignBottom="@+id/postalCodeEditTextRegister"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_toLeftOf="@+id/postalCodeEditText"
-            android:layout_toStartOf="@+id/postalCodeEditText" />
+            android:layout_toLeftOf="@+id/postalCodeEditTextRegister"
+            android:layout_toStartOf="@+id/postalCodeEditTextRegister" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/postalCodeEditText"
-            android:layout_below="@+id/numEditText"
+            android:id="@+id/postalCodeEditTextRegister"
+            android:layout_below="@+id/numEditTextRegister"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
 
@@ -174,43 +218,43 @@
             android:text="@string/cityText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/cityText"
-            android:layout_alignBaseline="@+id/cityEditText"
-            android:layout_alignBottom="@+id/cityEditText"
+            android:id="@+id/cityTextRegister"
+            android:layout_alignBaseline="@+id/cityEditTextRegister"
+            android:layout_alignBottom="@+id/cityEditTextRegister"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_toLeftOf="@+id/cityEditText"
-            android:layout_toStartOf="@+id/cityEditText" />
+            android:layout_toLeftOf="@+id/cityEditTextRegister"
+            android:layout_toStartOf="@+id/cityEditTextRegister" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="text"
             android:ems="10"
-            android:layout_below="@+id/postalCodeEditText"
+            android:layout_below="@+id/postalCodeEditTextRegister"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:id="@+id/cityEditText" />
+            android:id="@+id/cityEditTextRegister" />
 
         <TextView
             android:text="@string/countryText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/countryText"
-            android:layout_alignBaseline="@+id/countryTextEdit"
-            android:layout_alignBottom="@+id/countryTextEdit"
+            android:id="@+id/countryTextRegister"
+            android:layout_alignBaseline="@+id/countryTextEditRegister"
+            android:layout_alignBottom="@+id/countryTextEditRegister"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_toLeftOf="@+id/countryTextEdit"
-            android:layout_toStartOf="@+id/countryTextEdit" />
+            android:layout_toLeftOf="@+id/countryTextEditRegister"
+            android:layout_toStartOf="@+id/countryTextEditRegister" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="text"
             android:ems="10"
-            android:id="@+id/countryTextEdit"
-            android:layout_below="@+id/cityEditText"
+            android:id="@+id/countryTextEditRegister"
+            android:layout_below="@+id/cityEditTextRegister"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
 
@@ -219,7 +263,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/registerButtonRegister"
-            android:layout_below="@+id/countryTextEdit"
+            android:layout_below="@+id/countryTextEditRegister"
             android:layout_centerHorizontal="true"
             style="@style/btnColor"/>
 
