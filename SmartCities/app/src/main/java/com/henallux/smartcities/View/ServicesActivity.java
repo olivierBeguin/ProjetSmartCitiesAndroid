@@ -11,10 +11,12 @@ public class ServicesActivity extends LayoutActivity
 {
 
     private Button searchServiceButton, offerServiceButton;
+    private String auguPlusNouveau;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        auguPlusNouveau = "augu2";
         setContentView(R.layout.activity_services);
         searchServiceButton = (Button) findViewById(R.id.searchServiceButton);
         searchServiceButton.setOnClickListener(new View.OnClickListener() {
@@ -45,5 +47,6 @@ public class ServicesActivity extends LayoutActivity
     }
 
 
+//Je suis augu bis
 
 }
