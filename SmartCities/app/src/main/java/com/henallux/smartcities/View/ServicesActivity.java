@@ -15,7 +15,6 @@ public class ServicesActivity extends LayoutActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        auguPlusNouveau = "augu2";
         setContentView(R.layout.activity_services);
         searchServiceButton = (Button) findViewById(R.id.searchServiceButton);
         searchServiceButton.setOnClickListener(new View.OnClickListener() {
