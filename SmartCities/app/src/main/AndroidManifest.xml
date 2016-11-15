@@ -8,26 +8,26 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MyActivitiesActivity" />
-        <activity android:name=".CommentActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".view.MyActivitiesActivity" />
+        <activity android:name=".view.CommentActivity" />
+        <activity android:name=".view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".ServicesActivity" />
-        <activity android:name=".OfferServiceActivity" />
-        <activity android:name=".ConnectionActivity" />
-        <activity android:name=".SeeCommentActivity" />
-        <activity android:name=".SearchServiceActivity" />
-        <activity android:name=".ProfilActivity" />
-        <activity android:name=".LayoutActivity" />
-        <activity android:name=".ModifProfilActivity" />
-        <activity android:name=".MyServicesDoneActivity" />
-        <activity android:name=".MyServicesGivenActivity"></activity>
+        <activity android:name=".view.RegisterActivity" />
+        <activity android:name=".view.ServicesActivity" />
+        <activity android:name=".view.OfferServiceActivity" />
+        <activity android:name=".view.ConnectionActivity" />
+        <activity android:name=".view.SeeCommentActivity" />
+        <activity android:name=".view.SearchServiceActivity" />
+        <activity android:name=".view.ProfilActivity" />
+        <activity android:name=".view.LayoutActivity" />
+        <activity android:name=".view.ModifProfilActivity" />
+        <activity android:name=".view.MyServicesDoneActivity" />
+        <activity android:name=".view.MyServicesGivenActivity"></activity>
     </application>
 
 </manifest>

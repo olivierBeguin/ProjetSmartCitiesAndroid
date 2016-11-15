@@ -1,15 +1,16 @@
-package com.henallux.smartcities;
+package com.henallux.smartcities.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class ModifProfilActivity extends AppCompatActivity
-{
+import com.henallux.smartcities.R;
+
+public class MyServicesDoneActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_modif_profil);
+        setContentView(R.layout.activity_my_services_done);
     }
 }

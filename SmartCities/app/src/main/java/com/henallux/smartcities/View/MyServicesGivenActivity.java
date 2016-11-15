@@ -1,7 +1,9 @@
-package com.henallux.smartcities;
+package com.henallux.smartcities.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.henallux.smartcities.R;
 
 public class MyServicesGivenActivity extends AppCompatActivity
 {

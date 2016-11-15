@@ -8,7 +8,7 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
-    tools:context="com.henallux.smartcities.CommentActivity">
+    tools:context="com.henallux.smartcities.view.CommentActivity">
 
     <RelativeLayout
         android:layout_width="wrap_content"

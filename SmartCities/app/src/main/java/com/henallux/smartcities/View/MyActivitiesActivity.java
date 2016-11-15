@@ -1,8 +1,9 @@
-package com.henallux.smartcities;
+package com.henallux.smartcities.view;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TabHost;
+
+import com.henallux.smartcities.R;
 
 
 public class MyActivitiesActivity extends LayoutActivity
