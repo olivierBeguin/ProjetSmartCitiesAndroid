@@ -9,10 +9,8 @@ import com.henallux.smartcities.R;
 
 public class ServicesActivity extends LayoutActivity
 {
-    // coucou
 
     private Button searchServiceButton, offerServiceButton;
-    private String auguPlusNouveau;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
