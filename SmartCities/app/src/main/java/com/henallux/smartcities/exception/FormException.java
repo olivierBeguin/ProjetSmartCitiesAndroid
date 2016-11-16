@@ -1,10 +1,10 @@
 package com.henallux.smartcities.exception;
 
-public class TextException extends Exception
+public class FormException extends Exception
 {
     private String text;
 
-    public TextException(String text)
+    public FormException(String text)
     {
         this.text = text;
     }

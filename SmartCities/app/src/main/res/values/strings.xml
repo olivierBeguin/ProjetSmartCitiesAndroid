@@ -33,4 +33,7 @@
     <string name="not_filled">Un des champs n\'est pas rempli</string>
     <string name="dont_match">Les mots de passe ne correspondent pas</string>
     <string name="error_adressMail">Vous n\'avez pas entrez une adresse mail</string>
+    <string name="add_comment">Ajouter un commentaire</string>
+    <string name="services_given">Service effectué</string>
+    <string name="services_done">Service reçu</string>
 </resources>
