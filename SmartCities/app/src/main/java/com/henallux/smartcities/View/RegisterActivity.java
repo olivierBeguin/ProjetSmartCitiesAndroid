@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.henallux.smartcities.R;
-import com.henallux.smartcities.exception.TextException;
+import com.henallux.smartcities.exception.FormException;
 import com.henallux.smartcities.model.User;
 
 import java.util.Date;
@@ -53,24 +53,24 @@ public class RegisterActivity extends AppCompatActivity
 
             if (lastname.isEmpty() || firstname.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || mailAdress.isEmpty() || phoneNumber.isEmpty() || street.isEmpty() || city.isEmpty() || country.isEmpty() || postalCode.isEmpty() || houseNumber.isEmpty())
             {
-                throw new TextException(getString(R.string.not_filled));
+                throw new FormException(getString(R.string.not_filled));
             }
 
             if (!confirmPassword.equals(password))
             {
-                throw new TextException(getString(R.string.dont_match));
+                throw new FormException(getString(R.string.dont_match));
             }
 
             if (!mailAdress.matches("^[\\w!#$%&’*+/=?`{|}~^-]+(?:\\.[\\w!#$%&’*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$"))
             {
-                throw new TextException(getString(R.string.error_adressMail));
+                throw new FormException(getString(R.string.error_adressMail));
             }
 
             User user = new User(firstname, lastname, password, mailAdress, phoneNumber, street, city, country, new Date(), postalCode, houseNumber);
             //BD.addUser() :p
             goToServicesActivity();
         }
-        catch(TextException e)
+        catch(FormException e)
         {
             Toast.makeText(RegisterActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
