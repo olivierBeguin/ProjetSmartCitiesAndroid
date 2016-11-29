@@ -26,7 +26,7 @@
 
     <ImageView
         android:layout_height="189dp"
-        app:srcCompat="@android:color/black"
+        app:srcCompat="@drawable/logo"
         android:id="@+id/appLogo"
         android:contentDescription="@string/imagelogo"
         android:layout_below="@id/welcomeText"

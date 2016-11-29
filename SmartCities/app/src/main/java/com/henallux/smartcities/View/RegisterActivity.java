@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.henallux.smartcities.R;
 import com.henallux.smartcities.exception.FormException;
-import com.henallux.smartcities.model.User;
+import com.henallux.smartcities.model.UserApp;
 
 import java.util.Date;
 
@@ -66,7 +66,7 @@ public class RegisterActivity extends AppCompatActivity
                 throw new FormException(getString(R.string.error_adressMail));
             }
 
-            User user = new User(firstname, lastname, password, mailAdress, phoneNumber, street, city, country, new Date(), postalCode, houseNumber);
+            UserApp user = new UserApp(firstname, lastname, password, mailAdress, phoneNumber, street, city, country, new Date(), postalCode, houseNumber);
             //BD.addUser() :p
             goToServicesActivity();
         }

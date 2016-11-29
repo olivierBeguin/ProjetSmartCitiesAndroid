@@ -4,26 +4,22 @@ import java.io.Serializable;
 
 public class Comment implements Serializable
 {
-    private String comment;
+    private String commentDescription;
     private Double rating;
 
-    public Comment(String comment, Double rating)
+    public Comment(String commentDescription, Double rating)
     {
-        this.comment = comment;
+        this.commentDescription = commentDescription;
         this.rating = rating;
     }
 
     public String getComment() {
-        return comment;
+        return commentDescription;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
+    public void setComment(String commentDescription) { this.commentDescription = commentDescription; }
 
-    public Double getRating() {
-        return rating;
-    }
+    public Double getRating() { return rating; }
 
     public void setRating(Double rating) {
         this.rating = rating;

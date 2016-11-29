@@ -3,13 +3,13 @@ package com.henallux.smartcities.model;
 import java.io.Serializable;
 import java.util.Date;
 
-public class User implements Serializable
+public class UserApp implements Serializable
 {
     private String firstname, lastname, password, mailAdress, phoneNumber, street, city, country, postalCode, houseNumber;
     private Date inscriptionDate;
     private Integer sumServiceDone, sumServiceGiven;
 
-    public User(String firstname, String lastname, String password, String mailAdress, String phoneNumber, String street, String city, String country, Date inscriptionDate, String postalCode, String houseNumber, Integer sumServiceDone, Integer sumServiceGiven)
+    public UserApp(String firstname, String lastname, String password, String mailAdress, String phoneNumber, String street, String city, String country, Date inscriptionDate, String postalCode, String houseNumber, Integer sumServiceDone, Integer sumServiceGiven)
     {
         this.firstname = firstname;
         this.lastname = lastname;
@@ -26,7 +26,7 @@ public class User implements Serializable
         this.sumServiceGiven = sumServiceGiven;
     }
 
-    public User(String firstname, String lastname, String password, String mailAdress, String phoneNumber, String street, String city, String country, Date inscriptionDate, String postalCode, String houseNumber)
+    public UserApp(String firstname, String lastname, String password, String mailAdress, String phoneNumber, String street, String city, String country, Date inscriptionDate, String postalCode, String houseNumber)
     {
         this.firstname = firstname;
         this.lastname = lastname;
@@ -170,4 +170,8 @@ public class User implements Serializable
 
     public void setSumServiceGiven(Integer sumServiceGiven) { this.sumServiceGiven = sumServiceGiven; }
 
+    @Override
+    public String toString() {
+        return "Je suis "+ firstname;
+    }
 }

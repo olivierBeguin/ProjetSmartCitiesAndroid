@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.henallux.smartcities">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -26,8 +28,7 @@
         <activity android:name=".view.ProfilActivity" />
         <activity android:name=".view.LayoutActivity" />
         <activity android:name=".view.ModifProfilActivity" />
-        <activity android:name=".view.MyServicesDoneActivity" />
-        <activity android:name=".view.MyServicesGivenActivity"></activity>
+        <activity android:name=".view.NeedServiceActivity"></activity>
     </application>
 
 </manifest>
