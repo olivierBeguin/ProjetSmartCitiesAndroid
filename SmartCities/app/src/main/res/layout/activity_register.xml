@@ -258,12 +258,21 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
 
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerCategory"
+            android:layout_below="@id/countryTextEditRegister"
+            android:layout_centerHorizontal="true"
+            android:prompt="@string/select"
+            android:spinnerMode="dialog" />
+
         <Button
             android:text="@string/registerButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/registerButtonRegister"
-            android:layout_below="@+id/countryTextEditRegister"
+            android:layout_below="@+id/spinnerCategory"
             android:layout_centerHorizontal="true"
             style="@style/btnColor"/>
 

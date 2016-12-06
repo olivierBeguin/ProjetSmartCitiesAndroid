@@ -5,7 +5,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.henallux.smartcities.view.NeedServiceActivity;
-import com.henallux.smartcities.view.OfferServiceActivity;
 import com.henallux.smartcities.view.SearchServiceActivity;
 
 /**
@@ -13,8 +12,8 @@ import com.henallux.smartcities.view.SearchServiceActivity;
  */
 
 public class PagerAdapterServices extends FragmentPagerAdapter {
-    private final int PAGE_COUNT = 3;
-    private String tabTitles[] = new String[]{"Besoin d'un service", "Proposer un service", "Chercher un service"};
+    private final int PAGE_COUNT = 2;
+    private String tabTitles[] = new String[]{"Chercher un service", "Besoin d'un service"};
 
     public PagerAdapterServices(FragmentManager fm) {
         super(fm);
@@ -28,8 +27,6 @@ public class PagerAdapterServices extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if (position == 1)
-            return OfferServiceActivity.newInstance(position);
-        if (position == 2)
             return NeedServiceActivity.newInstance(position);
         return SearchServiceActivity.newInstance(position);
 

@@ -19,7 +19,7 @@
     <string name="owner_service">Propiétaire du service</string>
     <string name="service_title">Titre du service</string>
     <string name="validate">Valider</string>
-    <string name="mail_address">Addresse mail</string>
+    <string name="mail_address">Addresse mail (ou Username)</string>
     <string name="password">Mot de passe</string>
     <string name="open">Ouvrir</string>
     <string name="my_activities">Mes services</string>
@@ -32,8 +32,15 @@
     <string name="confirm_password">Confirmer le mot de passe</string>
     <string name="not_filled">Un des champs n\'est pas rempli</string>
     <string name="dont_match">Les mots de passe ne correspondent pas</string>
-    <string name="error_adressMail">Vous n\'avez pas entrez une adresse mail</string>
+    <string name="error_adressMail">Vous n\'avez pas entré une adresse mail</string>
     <string name="add_comment">Ajouter un commentaire</string>
     <string name="services_given">Service effectué</string>
     <string name="services_done">Service reçu</string>
+    <string name="select">Selectionner</string>
+    <string name="loading">Chargement...</string>
+    <string name="myPref">myPref</string>
+    <string-array name="category_array">
+        <item>Jeune</item>
+        <item>Senior</item>
+    </string-array>
 </resources>

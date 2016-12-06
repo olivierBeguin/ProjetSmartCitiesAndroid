@@ -21,14 +21,11 @@
         </activity>
         <activity android:name=".view.RegisterActivity" />
         <activity android:name=".view.ServicesActivity" />
-        <activity android:name=".view.OfferServiceActivity" />
         <activity android:name=".view.ConnectionActivity" />
         <activity android:name=".view.SeeCommentActivity" />
-        <activity android:name=".view.SearchServiceActivity" />
         <activity android:name=".view.ProfilActivity" />
         <activity android:name=".view.LayoutActivity" />
         <activity android:name=".view.ModifProfilActivity" />
-        <activity android:name=".view.NeedServiceActivity"></activity>
     </application>
 
 </manifest>

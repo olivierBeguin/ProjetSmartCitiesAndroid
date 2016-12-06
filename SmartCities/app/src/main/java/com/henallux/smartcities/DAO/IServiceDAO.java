@@ -4,6 +4,7 @@ import com.henallux.smartcities.model.CategoryService;
 import com.henallux.smartcities.model.Service;
 import com.henallux.smartcities.model.UserApp;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,7 +14,6 @@ import java.util.List;
 public interface IServiceDAO
 {
     public Service getServicesWithUser(UserApp userApp) throws Exception;
-    public List<Service> getServicesWithCategory(CategoryService categoryService, String researchString);
+    public ArrayList<Service> getServices(String token) throws Exception;
     public void createService(Service service);
-
 }

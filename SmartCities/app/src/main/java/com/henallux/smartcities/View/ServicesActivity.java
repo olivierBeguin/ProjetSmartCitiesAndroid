@@ -16,11 +16,13 @@ public class ServicesActivity extends LayoutActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_services);
+
+        //Créer le ViewPager
         ViewPager viewPager = (ViewPager) findViewById(R.id.services_pager);
         viewPager.setAdapter(new PagerAdapterServices(getSupportFragmentManager()));
 
+        //Attacher le Tab
         PagerSlidingTabStrip tabsStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs_services);
-        // Attach the view pager to the tab strip
         tabsStrip.setViewPager(viewPager);
     }
 }

@@ -16,7 +16,7 @@ import java.util.List;
 
 public class PagerAdapterMyActivities extends FragmentPagerAdapter {
     private final int PAGE_COUNT = 2;
-    private String tabTitles[] = new String[] {"Service reçu", "Service effectué"};
+    private String tabTitles[] = new String[] {"Service effectué", "Service reçu"};
 
     public PagerAdapterMyActivities(FragmentManager fm) {
         super(fm);

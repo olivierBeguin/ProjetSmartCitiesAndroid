@@ -5,173 +5,205 @@ import java.util.Date;
 
 public class UserApp implements Serializable
 {
-    private String firstname, lastname, password, mailAdress, phoneNumber, street, city, country, postalCode, houseNumber;
-    private Date inscriptionDate;
-    private Integer sumServiceDone, sumServiceGiven;
+    private String FirstName, LastName, Password, Email, PhoneNumber, Street, City, Country, PostalCode, Number, Category;
+    private Date DateInscription;
+    private Integer SumServiceDone, SumServiceGiven;
 
-    public UserApp(String firstname, String lastname, String password, String mailAdress, String phoneNumber, String street, String city, String country, Date inscriptionDate, String postalCode, String houseNumber, Integer sumServiceDone, Integer sumServiceGiven)
+    public UserApp(String firstName, String lastName, String password, String email, String phoneNumber, String street, String city, String country, String category, Date dateInscription, String postalCode, String number, Integer sumServiceDone, Integer sumServiceGiven)
     {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.password = password;
-        this.mailAdress = mailAdress;
-        this.phoneNumber = phoneNumber;
-        this.postalCode = postalCode;
-        this.street = street;
-        this.city = city;
-        this.country = country;
-        this.inscriptionDate = inscriptionDate;
-        this.houseNumber = houseNumber;
-        this.sumServiceDone = sumServiceDone;
-        this.sumServiceGiven = sumServiceGiven;
+        this.FirstName = firstName;
+        this.LastName = lastName;
+        this.Password = password;
+        this.Email = email;
+        this.PhoneNumber = phoneNumber;
+        this.PostalCode = postalCode;
+        this.Street = street;
+        this.City = city;
+        this.Country = country;
+        this.Category = category;
+        this.DateInscription = dateInscription;
+        this.Number = number;
+        this.SumServiceDone = sumServiceDone;
+        this.SumServiceGiven = sumServiceGiven;
     }
 
-    public UserApp(String firstname, String lastname, String password, String mailAdress, String phoneNumber, String street, String city, String country, Date inscriptionDate, String postalCode, String houseNumber)
+    public UserApp(String firstName, String lastName, String password, String email, String phoneNumber, String street, String city, String country, String category, Date dateInscription, String postalCode, String number)
     {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.password = password;
-        this.mailAdress = mailAdress;
-        this.phoneNumber = phoneNumber;
-        this.postalCode = postalCode;
-        this.street = street;
-        this.city = city;
-        this.country = country;
-        this.inscriptionDate = inscriptionDate;
-        this.houseNumber = houseNumber;
-        this.sumServiceDone = 0;
-        this.sumServiceGiven = 0;
+        this.FirstName = firstName;
+        this.LastName = lastName;
+        this.Password = password;
+        this.Email = email;
+        this.PhoneNumber = phoneNumber;
+        this.PostalCode = postalCode;
+        this.Street = street;
+        this.City = city;
+        this.Country = country;
+        this.Category = category;
+        this.DateInscription = dateInscription;
+        this.Number = number;
+        this.SumServiceDone = 0;
+        this.SumServiceGiven = 0;
     }
 
-    public String getFirstname()
+    public UserApp(String firstName, String lastName, String email, String phoneNumber, String street, String city, String country, String category, Date dateInscription, String postalCode, String number, Integer sumServiceDone, Integer sumServiceGiven)
     {
-        return firstname;
+        this.FirstName = firstName;
+        this.LastName = lastName;
+        this.Email = email;
+        this.PhoneNumber = phoneNumber;
+        this.PostalCode = postalCode;
+        this.Street = street;
+        this.City = city;
+        this.Country = country;
+        this.Category = category;
+        this.DateInscription = dateInscription;
+        this.Number = number;
+        this.SumServiceDone = sumServiceDone;
+        this.SumServiceGiven = sumServiceGiven;
     }
 
-    public void setFirstname(String firstname)
+    public UserApp()
     {
-        this.firstname = firstname;
+
     }
 
-    public String getLastname()
+    public String getFirstName()
     {
-        return lastname;
+        return FirstName;
     }
 
-    public void setLastname(String lastname)
+    public void setFirstName(String firstName)
     {
-        this.lastname = lastname;
+        this.FirstName = firstName;
+    }
+
+    public String getLastName()
+    {
+        return LastName;
+    }
+
+    public void setLastName(String lastName)
+    {
+        this.LastName = lastName;
     }
 
     public String getPassword()
     {
-        return password;
+        return Password;
     }
 
     public void setPassword(String password)
     {
-        this.password = password;
+        this.Password = password;
     }
 
-    public String getMailAdress()
+    public String getEmail()
     {
-        return mailAdress;
+        return Email;
     }
 
-    public void setMailAdress(String mailAdress)
+    public void setEmail(String email)
     {
-        this.mailAdress = mailAdress;
+        this.Email = email;
     }
 
     public String getPhoneNumber()
     {
-        return phoneNumber;
+        return PhoneNumber;
     }
 
     public void setPhoneNumber(String phoneNumber)
     {
-        this.phoneNumber = phoneNumber;
+        this.PhoneNumber = phoneNumber;
     }
 
     public String getStreet()
     {
-        return street;
+        return Street;
     }
 
     public void setStreet(String street)
     {
-        this.street = street;
+        this.Street = street;
     }
 
     public String getCity()
     {
-        return city;
+        return City;
     }
 
     public void setCity(String city)
     {
-        this.city = city;
+        this.City = city;
     }
 
     public String getCountry()
     {
-        return country;
+        return Country;
     }
 
     public void setCountry(String country)
     {
-        this.country = country;
+        this.Country = country;
     }
 
-    public Date getInscriptionDate()
-    {
-        return inscriptionDate;
+    public String getCategory() {
+        return Category;
     }
 
-    public void setInscriptionDate(Date inscriptionDate)
+    public void setCategory(String category) {
+        this.Category = category;
+    }
+
+    public Date getDateInscription()
     {
-        this.inscriptionDate = inscriptionDate;
+        return DateInscription;
+    }
+
+    public void setDateInscription(Date dateInscription)
+    {
+        this.DateInscription = dateInscription;
     }
 
     public String getPostalCode()
     {
-        return postalCode;
+        return PostalCode;
     }
 
     public void setPostalCode(String postalCode)
     {
-        this.postalCode = postalCode;
+        this.PostalCode = postalCode;
     }
 
-    public String getHouseNumber()
+    public String getNumber()
     {
-        return houseNumber;
+        return Number;
     }
 
-    public void setHouseNumber(String houseNumber)
+    public void setNumber(String number)
     {
-        this.houseNumber = houseNumber;
+        this.Number = number;
     }
 
     public Integer getSumServiceDone()
     {
-        return sumServiceDone;
+        return SumServiceDone;
     }
 
     public void setSumServiceDone(Integer sumServiceDone)
     {
-        this.sumServiceDone = sumServiceDone;
+        this.SumServiceDone = sumServiceDone;
     }
 
     public Integer getSumServiceGiven()
     {
-        return sumServiceGiven;
+        return SumServiceGiven;
     }
 
-    public void setSumServiceGiven(Integer sumServiceGiven) { this.sumServiceGiven = sumServiceGiven; }
+    public void setSumServiceGiven(Integer sumServiceGiven) { this.SumServiceGiven = sumServiceGiven; }
 
     @Override
     public String toString() {
-        return "Je suis "+ firstname;
+        return "Je suis "+ FirstName;
     }
 }
