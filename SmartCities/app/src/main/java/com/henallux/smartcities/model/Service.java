@@ -6,22 +6,16 @@ import java.util.Date;
 
 public class Service implements Serializable
 {
-    private String descriptionService;
+    private String descriptionService, labelService;
     private Date datePublicationService;
     private UserApp UserNeedService;
     private CategoryService category;
+    private DoService doService;
 
-    public  Service(String descriptionService, Date datePublicationService, UserApp userNeedService, CategoryService category)
+    public  Service(String labelService, String descriptionService, Date datePublicationService)
     {
         this.descriptionService = descriptionService;
-        this.datePublicationService = datePublicationService;
-        this.UserNeedService = userNeedService;
-        this.category = category;
-    }
-
-    public  Service(String descriptionService, Date datePublicationService)
-    {
-        this.descriptionService = descriptionService;
+        this.labelService = labelService;
         this.datePublicationService = datePublicationService;
     }
 
@@ -41,6 +35,14 @@ public class Service implements Serializable
         return UserNeedService;
     }
 
+    public DoService getDoService() {
+        return doService;
+    }
+
+    public String getLabelService() {
+        return labelService;
+    }
+
     public void setCategory(CategoryService category) {
         this.category = category;
     }
@@ -55,6 +57,14 @@ public class Service implements Serializable
 
     public void setUserNeedService(UserApp userNeedService) {
         UserNeedService = userNeedService;
+    }
+
+    public void setDoService(DoService doService) {
+        this.doService = doService;
+    }
+
+    public void setLabelService(String labelService) {
+        this.labelService = labelService;
     }
 }
 

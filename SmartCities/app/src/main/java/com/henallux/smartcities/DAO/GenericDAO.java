@@ -26,6 +26,7 @@ public class GenericDAO implements IGenericDAO
             sb.append(line);
         }
         br.close();
-        return sb.toString();
+        stringJSON = sb.toString();
+        return stringJSON;
     }
 }

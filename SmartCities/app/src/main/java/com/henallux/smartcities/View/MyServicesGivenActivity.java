@@ -35,8 +35,6 @@ public class MyServicesGivenActivity extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_my_services_given, container, false);
-        TextView tvTitle = (TextView) view.findViewById(R.id.tvTitle);
-        tvTitle.setText("Given");
         return view;
     }
 }

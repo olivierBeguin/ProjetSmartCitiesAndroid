@@ -7,6 +7,7 @@ import com.henallux.smartcities.exception.ConnectionException;
 import com.henallux.smartcities.model.UserApp;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
@@ -71,9 +72,13 @@ public class UserAppDAO extends GenericDAO implements IUserAppDAO
             urlConnection.disconnect();
             return jsonToToken(stringJSON);
         }
+        catch (IOException e)
+        {
+            throw new ConnectionException(false);
+        }
         catch (Exception e)
         {
-            throw new ConnectionException();
+            throw new ConnectionException(true);
         }
     }
 
@@ -93,8 +98,16 @@ public class UserAppDAO extends GenericDAO implements IUserAppDAO
 
     private String jsonToToken(String stringJSON) throws Exception
     {
-        String token = new JSONObject(stringJSON).getString("access_token");
-        return token;
+        try
+        {
+            String token = new JSONObject(stringJSON).getString("access_token");
+            return token;
+        }
+        catch (JSONException e)
+        {
+            throw new ConnectionException(true);
+        }
+
     }
 
 

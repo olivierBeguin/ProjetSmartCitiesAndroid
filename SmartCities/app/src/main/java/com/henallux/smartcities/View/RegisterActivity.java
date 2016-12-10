@@ -121,7 +121,7 @@ public class RegisterActivity extends AppCompatActivity
             }
             catch (Exception e)
             {
-                Toast.makeText(RegisterActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                Log.i("Test", e.getMessage());
             }
             return null;
         }

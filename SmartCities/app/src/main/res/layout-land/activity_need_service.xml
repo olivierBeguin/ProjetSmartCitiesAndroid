@@ -22,7 +22,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/libelle_service"
-            android:layout_centerHorizontal="true" />
+            android:layout_alignBaseline="@+id/libelle_service_edit_text"
+            android:layout_alignBottom="@+id/libelle_service_edit_text"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@+id/libelle_service_edit_text"
+            android:layout_toStartOf="@+id/libelle_service_edit_text"/>
 
         <EditText
             android:layout_width="wrap_content"
@@ -30,19 +35,21 @@
             android:inputType="text"
             android:ems="8"
             android:id="@+id/libelle_service_edit_text"
-            android:layout_below="@+id/libelle_service"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"/>
 
         <TextView
             android:text="@string/description_service"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/description_service"
-            android:layout_below="@id/libelle_service_edit_text"
-            android:layout_centerHorizontal="true"/>
+            android:layout_alignBaseline="@+id/description_service_edit_text"
+            android:layout_alignBottom="@+id/description_service_edit_text"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@+id/description_service_edit_text"
+            android:layout_toStartOf="@+id/description_service_edit_text"/>
 
         <EditText
             android:layout_width="wrap_content"
@@ -50,12 +57,9 @@
             android:inputType="text"
             android:ems="8"
             android:id="@+id/description_service_edit_text"
-            android:layout_below="@+id/description_service"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            android:layout_below="@+id/libelle_service_edit_text"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            />
+            android:layout_alignParentEnd="true" />
 
         <Spinner
             android:layout_width="match_parent"

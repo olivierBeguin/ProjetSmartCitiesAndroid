@@ -92,14 +92,13 @@
                 android:background="@color/colorButton" />
 
             <ProgressBar
-                style="@style/progressBarStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/editTextMail"
                 android:layout_centerHorizontal="true"
                 android:id="@+id/progressBar"
                 android:progressDrawable="@drawable/circular_progress_bar"
-                android:progressBackgroundTint="@color/colorButton" />
+                android:indeterminate="false" />
 
         </RelativeLayout>
 

@@ -13,7 +13,7 @@ import com.henallux.smartcities.view.SearchServiceActivity;
 
 public class PagerAdapterServices extends FragmentPagerAdapter {
     private final int PAGE_COUNT = 2;
-    private String tabTitles[] = new String[]{"Chercher un service", "Besoin d'un service"};
+    private String tabTitles[] = new String[]{"Effectuer un service", "Besoin d'un service"};
 
     public PagerAdapterServices(FragmentManager fm) {
         super(fm);

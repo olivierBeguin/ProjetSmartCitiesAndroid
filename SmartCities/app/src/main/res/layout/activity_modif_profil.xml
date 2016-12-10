@@ -14,13 +14,13 @@
         android:text="@string/lastnameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/lastnameTextProfil"
-        android:layout_alignBaseline="@+id/lastnameEditTextProfil"
-        android:layout_alignBottom="@+id/lastnameEditTextProfil"
+        android:id="@+id/lastnameTextModifProfil"
+        android:layout_alignBaseline="@+id/lastnameEditTextModifProfil"
+        android:layout_alignBottom="@+id/lastnameEditTextModifProfil"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/lastnameEditTextProfil"
-        android:layout_toStartOf="@+id/lastnameEditTextProfil" />
+        android:layout_toLeftOf="@+id/lastnameEditTextModifProfil"
+        android:layout_toStartOf="@+id/lastnameEditTextModifProfil" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -28,7 +28,7 @@
         android:inputType="textPersonName"
         android:text=""
         android:ems="10"
-        android:id="@+id/lastnameEditTextProfil"
+        android:id="@+id/lastnameEditTextModifProfil"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
@@ -38,13 +38,13 @@
         android:text="@string/firstnameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/firstnameTextProfil"
-        android:layout_alignBaseline="@+id/firstnameTextEditTextProfil"
-        android:layout_alignBottom="@+id/firstnameTextEditTextProfil"
+        android:id="@+id/firstnameTextModifProfil"
+        android:layout_alignBaseline="@+id/firstnameTextEditTextModifProfil"
+        android:layout_alignBottom="@+id/firstnameTextEditTextModifProfil"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/firstnameTextEditTextProfil"
-        android:layout_toStartOf="@+id/firstnameTextEditTextProfil" />
+        android:layout_toLeftOf="@+id/firstnameTextEditTextModifProfil"
+        android:layout_toStartOf="@+id/firstnameTextEditTextModifProfil" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -52,8 +52,8 @@
         android:inputType="textPersonName"
         android:text=""
         android:ems="10"
-        android:id="@+id/firstnameTextEditTextProfil"
-        android:layout_below="@+id/lastnameEditTextProfil"
+        android:id="@+id/firstnameTextEditTextModifProfil"
+        android:layout_below="@+id/lastnameEditTextModifProfil"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"/>
 
@@ -61,90 +61,88 @@
         android:text="@string/mailText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/mailTextProfil"
-        android:layout_alignBaseline="@+id/mailEditTextProfil"
-        android:layout_alignBottom="@+id/mailEditTextProfil"
+        android:id="@+id/mailTextModifProfil"
+        android:layout_alignBaseline="@+id/mailEditTextModifProfil"
+        android:layout_alignBottom="@+id/mailEditTextModifProfil"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/mailEditTextProfil"
-        android:layout_toStartOf="@+id/mailEditTextProfil" />
+        android:layout_toLeftOf="@+id/mailEditTextModifProfil"
+        android:layout_toStartOf="@+id/mailEditTextModifProfil" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
         android:ems="10"
-        android:layout_below="@+id/firstnameTextEditTextProfil"
+        android:layout_below="@+id/firstnameTextEditTextModifProfil"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:id="@+id/mailEditTextProfil"
+        android:id="@+id/mailEditTextModifProfil"
         android:enabled="false"/>
 
     <TextView
         android:text="@string/phoneText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/phoneTextProfil"
-        android:layout_alignBaseline="@+id/phoneEditTextProfil"
-        android:layout_alignBottom="@+id/phoneEditTextProfil"
+        android:id="@+id/phoneTextModifProfil"
+        android:layout_alignBaseline="@+id/phoneEditTextModifProfil"
+        android:layout_alignBottom="@+id/phoneEditTextModifProfil"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/phoneEditTextProfil"
-        android:layout_toStartOf="@+id/phoneEditTextProfil" />
+        android:layout_toLeftOf="@+id/phoneEditTextModifProfil"
+        android:layout_toStartOf="@+id/phoneEditTextModifProfil" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="phone"
         android:ems="10"
-        android:layout_below="@+id/mailEditTextProfil"
+        android:layout_below="@+id/mailEditTextModifProfil"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:id="@+id/phoneEditTextProfil"
-        android:enabled="false"/>
+        android:id="@+id/phoneEditTextModifProfil"/>
 
     <TextView
         android:text="@string/streetText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/streetTextProfil"
-        android:layout_alignBaseline="@+id/streetEditTextProfil"
-        android:layout_alignBottom="@+id/streetEditTextProfil"
+        android:layout_alignBaseline="@+id/streetEditTextModifProfil"
+        android:layout_alignBottom="@+id/streetEditTextModifProfil"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/streetEditTextProfil"
-        android:layout_toStartOf="@+id/streetEditTextProfil" />
+        android:layout_toLeftOf="@+id/streetEditTextModifProfil"
+        android:layout_toStartOf="@+id/streetEditTextModifProfil" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPostalAddress"
         android:ems="10"
-        android:id="@+id/streetEditTextProfil"
-        android:layout_below="@+id/phoneEditTextProfil"
+        android:id="@+id/streetEditTextModifProfil"
+        android:layout_below="@+id/phoneEditTextModifProfil"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:enabled="false"/>
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:text="@string/numberText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/numTextProfil"
-        android:layout_alignBaseline="@+id/numEditTextProfil"
-        android:layout_alignBottom="@+id/numEditTextProfil"
+        android:id="@+id/numTextModifProfil"
+        android:layout_alignBaseline="@+id/numEditTextModifProfil"
+        android:layout_alignBottom="@+id/numEditTextModifProfil"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/numEditTextProfil"
-        android:layout_toStartOf="@+id/numEditTextProfil" />
+        android:layout_toLeftOf="@+id/numEditTextModifProfil"
+        android:layout_toStartOf="@+id/numEditTextModifProfil" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/numEditTextProfil"
-        android:layout_below="@+id/streetEditTextProfil"
+        android:id="@+id/numEditTextModifProfil"
+        android:layout_below="@+id/streetEditTextModifProfil"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
@@ -152,21 +150,21 @@
         android:text="@string/postalCodeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/postalCodeTextProfil"
-        android:layout_alignBaseline="@+id/postalCodeEditTextProfil"
-        android:layout_alignBottom="@+id/postalCodeEditTextProfil"
+        android:id="@+id/postalCodeTextModifProfil"
+        android:layout_alignBaseline="@+id/postalCodeEditTextModifProfil"
+        android:layout_alignBottom="@+id/postalCodeEditTextModifProfil"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/postalCodeEditTextProfil"
-        android:layout_toStartOf="@+id/postalCodeEditTextProfil" />
+        android:layout_toLeftOf="@+id/postalCodeEditTextModifProfil"
+        android:layout_toStartOf="@+id/postalCodeEditTextModifProfil" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/postalCodeEditTextProfil"
-        android:layout_below="@+id/numEditTextProfil"
+        android:id="@+id/postalCodeEditTextModifProfil"
+        android:layout_below="@+id/numEditTextModifProfil"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
@@ -174,50 +172,50 @@
         android:text="@string/cityText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/cityTextProfil"
-        android:layout_alignBaseline="@+id/cityEditTextProfil"
-        android:layout_alignBottom="@+id/cityEditTextProfil"
+        android:id="@+id/cityTextModifProfil"
+        android:layout_alignBaseline="@+id/cityEditTextModifProfil"
+        android:layout_alignBottom="@+id/cityEditTextModifProfil"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/cityEditTextProfil"
-        android:layout_toStartOf="@+id/cityEditTextProfil" />
+        android:layout_toLeftOf="@+id/cityEditTextModifProfil"
+        android:layout_toStartOf="@+id/cityEditTextModifProfil" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="text"
         android:ems="10"
-        android:layout_below="@+id/postalCodeEditTextProfil"
+        android:layout_below="@+id/postalCodeEditTextModifProfil"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:id="@+id/cityEditTextProfil" />
+        android:id="@+id/cityEditTextModifProfil" />
 
     <TextView
         android:text="@string/countryText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/countryTextProfil"
-        android:layout_alignBaseline="@+id/countryTextEditProfil"
-        android:layout_alignBottom="@+id/countryTextEditProfil"
+        android:id="@+id/countryTextModifProfil"
+        android:layout_alignBaseline="@+id/countryTextEditModifProfil"
+        android:layout_alignBottom="@+id/countryTextEditModifProfil"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/countryTextEditProfil"
-        android:layout_toStartOf="@+id/countryTextEditProfil" />
+        android:layout_toLeftOf="@+id/countryTextEditModifProfil"
+        android:layout_toStartOf="@+id/countryTextEditModifProfil" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="text"
         android:ems="10"
-        android:id="@+id/countryTextEditProfil"
-        android:layout_below="@+id/cityEditTextProfil"
+        android:id="@+id/countryTextEditModifProfil"
+        android:layout_below="@+id/cityEditTextModifProfil"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/countryTextEditProfil"
+        android:layout_below="@id/countryTextEditModifProfil"
         android:text="@string/save_button"
         android:layout_centerHorizontal="true"
         android:id="@+id/save_button"

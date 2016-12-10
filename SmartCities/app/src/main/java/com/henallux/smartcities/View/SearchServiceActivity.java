@@ -1,23 +1,38 @@
 package com.henallux.smartcities.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.henallux.smartcities.DAO.CategoryServiceDAO;
+import com.henallux.smartcities.DAO.ServiceDAO;
+import com.henallux.smartcities.DAO.UserAppDAO;
 import com.henallux.smartcities.R;
+import com.henallux.smartcities.model.CategoryService;
+import com.henallux.smartcities.model.Service;
+import com.henallux.smartcities.model.ServicesAdapter;
+import com.henallux.smartcities.model.UserApp;
+import com.henallux.smartcities.model.UserConnected;
+
+import java.util.ArrayList;
 
 public class SearchServiceActivity extends Fragment {
     public static final String ARG_PAGE = "ARG_PAGE";
 
     private int mPage;
-
+    private ProgressBar progressBar;
 
     public static SearchServiceActivity newInstance(int page) {
         Bundle args = new Bundle();
@@ -31,10 +46,13 @@ public class SearchServiceActivity extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPage = getArguments().getInt(ARG_PAGE);
-        Spinner spinner = (Spinner) getActivity().findViewById(R.id.spinnerSearchService);
-        CategoryServiceDAO categoryServiceDAO = new CategoryServiceDAO();
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(getString(R.string.myPref), Context.MODE_PRIVATE);
-        //String token = sharedPreferences.getString("Token", "");
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("myPref", Context.MODE_PRIVATE);
+        String token = sharedPreferences.getString("Token", "");
+        new LoadCategory().execute(token);
+        new LoadServices().execute(token);
+
+
+
 
     }
 
@@ -44,6 +62,88 @@ public class SearchServiceActivity extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_searchservice, container, false);
         return view;
+    }
+
+    private class LoadCategory extends AsyncTask<String, Integer, ArrayList<CategoryService>>
+    {
+        @Override
+        protected void onPreExecute()
+        {
+            super.onPreExecute();
+        }
+        @Override
+        protected ArrayList<CategoryService> doInBackground(String... params)
+        {
+            ArrayList<CategoryService> categoryServices = null;
+            try
+            {
+                CategoryServiceDAO categoryServiceDAO = new CategoryServiceDAO();
+                categoryServices = categoryServiceDAO.getCategoryService(params[0]);
+            }
+            catch (Exception e)
+            {
+                Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_LONG).show();
+
+            }
+            return categoryServices;
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values)
+        {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<CategoryService> categoryServices) {
+            Spinner spinner = (Spinner) getActivity().findViewById(R.id.spinnerSearchService);
+            ArrayList<String> category = new ArrayList<>();
+            category.add("Selectionnez une catégorie");
+            for (CategoryService cat : categoryServices)
+            {
+                category.add(cat.getDescription());
+            }
+            ArrayAdapter adapter = new ArrayAdapter(getActivity(), R.layout.support_simple_spinner_dropdown_item, category);
+            spinner.setAdapter(adapter);
+        }
+    }
+
+    private class LoadServices extends AsyncTask<String, Integer, ArrayList<Service>>
+    {
+        @Override
+        protected void onPreExecute()
+        {
+            super.onPreExecute();
+        }
+        @Override
+        protected ArrayList<Service> doInBackground(String... params)
+        {
+            ArrayList<Service> services = null;
+            try
+            {
+                ServiceDAO serviceDAO = new ServiceDAO();
+                services = serviceDAO.getServices(params[0]);
+            }
+            catch (Exception e)
+            {
+                Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_LONG).show();
+                Log.i("Test", e.getMessage());
+            }
+            return services;
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values)
+        {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<Service> services) {
+            ListView listView = (ListView) getActivity().findViewById(R.id.listServices);
+            ServicesAdapter servicesAdapter = new ServicesAdapter(getActivity(), services);
+            listView.setAdapter(servicesAdapter);
+        }
     }
 
 }

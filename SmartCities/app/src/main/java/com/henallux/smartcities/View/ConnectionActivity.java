@@ -1,9 +1,11 @@
 package com.henallux.smartcities.view;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.PorterDuff;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -37,6 +39,7 @@ public class ConnectionActivity extends AppCompatActivity
                     {goToServicesActivity();}
                 });
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar.getIndeterminateDrawable().setColorFilter(0xFF740024, PorterDuff.Mode.MULTIPLY);
         progressBar.setVisibility(View.GONE);
 
     }
@@ -59,6 +62,7 @@ public class ConnectionActivity extends AppCompatActivity
 
     private class LoadUserApp extends AsyncTask<String, Integer, UserApp>
     {
+        private Exception exceptionToBeThrow;
         @Override
         protected void onPreExecute()
         {
@@ -68,9 +72,10 @@ public class ConnectionActivity extends AppCompatActivity
         @Override
         protected UserApp doInBackground(String... params)
         {
-            UserApp userApp = null;
+            UserApp userApp = new UserApp();
             String token;
-            try {
+            try
+            {
                 UserAppDAO userAppDAO = new UserAppDAO();
                 Log.i("Test", params[0] + " " + params[1]);
                 token = userAppDAO.getUserWithMailandPw(params[0], params[1]);
@@ -80,9 +85,10 @@ public class ConnectionActivity extends AppCompatActivity
             }
             catch (Exception e)
             {
-                Toast.makeText(ConnectionActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                exceptionToBeThrow = e;
+                return userApp;
             }
-            return userApp;
+
         }
 
         @Override
@@ -94,11 +100,15 @@ public class ConnectionActivity extends AppCompatActivity
         @Override
         protected void onPostExecute(UserApp userApp) {
             progressBar.setVisibility(View.GONE);
-            if (userApp != null)
+            if (userApp != null && exceptionToBeThrow == null)
             {
                 UserConnected.setInstance(userApp);
                 Intent intent = new Intent(ConnectionActivity.this, ServicesActivity.class);
                 startActivity(intent);
+            }
+            else
+            {
+                Toast.makeText(ConnectionActivity.this, exceptionToBeThrow.getMessage(), Toast.LENGTH_LONG).show();
             }
         }
     }

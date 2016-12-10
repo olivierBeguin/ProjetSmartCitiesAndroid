@@ -17,7 +17,7 @@ public class CategoryServiceDAO extends GenericDAO implements ICategoryServiceDA
     @Override
     public ArrayList<CategoryService> getCategoryService(String token) throws Exception
     {
-        String stringJSON = getJsonStringWithURL(token, "http://g-aideappweb.azurewebsites.net/api/categoryService");
+        String stringJSON = getJsonStringWithURL(token, "http://g-aideappweb.azurewebsites.net/api/categoryServices");
         return jsonToCategoryServices(stringJSON);
     }
 
@@ -27,8 +27,8 @@ public class CategoryServiceDAO extends GenericDAO implements ICategoryServiceDA
         JSONArray jsonArray = new JSONArray(stringJSON);
         for (int i = 0; i < jsonArray.length(); i++)
         {
-            JSONObject jsonCategoryService = new JSONObject(stringJSON);
-            categoryServices.add(new CategoryService(jsonCategoryService.getString("DescriptionService")));
+            JSONObject jsonCategoryService = jsonArray.getJSONObject(i);
+            categoryServices.add(new CategoryService(jsonCategoryService.getString("Label")));
         }
         return categoryServices;
     }

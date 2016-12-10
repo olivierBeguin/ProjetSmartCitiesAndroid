@@ -15,6 +15,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -46,11 +47,15 @@ public class ServiceDAO extends GenericDAO implements IServiceDAO
     private ArrayList<Service> jsonToServices(String stringJSON) throws Exception
     {
         ArrayList<Service> services = new ArrayList<>();
-        JSONArray jsonArray = new JSONArray(stringJSON);
-        for (int i = 0; i < jsonArray.length(); i++)
+        JSONArray jsonArrayService = new JSONArray(stringJSON);
+        for (int i = 0; i < jsonArrayService.length(); i++)
         {
-            JSONObject jsonService = new JSONObject(stringJSON);
-            services.add(new Service(jsonService.getString("DescriptionService"), new Date()));
+            JSONObject jsonService = jsonArrayService.getJSONObject(i);
+
+            SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
+            services.add(new Service(jsonService.getString("Label"), jsonService.getString("DescriptionService"), sdf.parse(jsonService.getString("DatePublicationService"))));
+            JSONObject jsonCategory = jsonService.getJSONObject("Category");
+            services.get(i).setCategory(new CategoryService(jsonCategory.getString("Label")));
         }
         return services;
     }

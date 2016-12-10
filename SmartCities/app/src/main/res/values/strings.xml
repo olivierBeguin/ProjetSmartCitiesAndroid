@@ -39,6 +39,10 @@
     <string name="select">Selectionner</string>
     <string name="loading">Chargement...</string>
     <string name="myPref">myPref</string>
+    <string name="libelle_du_service">Libellé du service</string>
+    <string name="description_service">Description du service</string>
+    <string name="see_comment">Voir le commentaire</string>
+    <string name="btn_ask_service">Demander le service</string>
     <string-array name="category_array">
         <item>Jeune</item>
         <item>Senior</item>

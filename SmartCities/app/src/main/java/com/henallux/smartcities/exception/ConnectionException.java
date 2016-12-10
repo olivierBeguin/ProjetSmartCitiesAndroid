@@ -6,14 +6,19 @@ package com.henallux.smartcities.exception;
 
 public class ConnectionException extends Exception
 {
-    public ConnectionException()
-    {
+    private boolean errorEntry;
 
+    public ConnectionException(boolean errorEntry)
+    {
+        this.errorEntry = errorEntry;
     }
 
     @Override
     public String getMessage()
     {
-        return "Nous ne parvenons pas à effection la connection. Etes-vous bien connecté à Internet";
+        if (errorEntry == false)
+            return "Nous ne parvenons pas à effectuer la connection. Etes-vous bien connecté à Internet?";
+        else
+            return "Vos identifiants sont incorrects";
     }
 }

@@ -23,23 +23,23 @@ public class ModifProfilActivity extends AppCompatActivity
     private void setModifyContent()
     {
         UserApp userApp = UserConnected.getInstance();
-        EditText editText = (EditText) findViewById(R.id.lastnameEditTextProfil);
+        EditText editText = (EditText) findViewById(R.id.lastnameEditTextModifProfil);
         editText.setText(userApp.getLastName());
-        editText = (EditText) findViewById(R.id.firstnameTextEditTextProfil);
+        editText = (EditText) findViewById(R.id.firstnameTextEditTextModifProfil);
         editText.setText(userApp.getFirstName());
-        editText = (EditText) findViewById(R.id.mailEditTextProfil);
+        editText = (EditText) findViewById(R.id.mailEditTextModifProfil);
         editText.setText(userApp.getEmail());
-        editText = (EditText) findViewById(R.id.phoneEditTextProfil);
+        editText = (EditText) findViewById(R.id.phoneEditTextModifProfil);
         editText.setText(userApp.getPhoneNumber());
-        editText = (EditText) findViewById(R.id.streetEditTextProfil);
+        editText = (EditText) findViewById(R.id.streetEditTextModifProfil);
         editText.setText(userApp.getStreet());
-        editText = (EditText) findViewById(R.id.numEditTextProfil);
+        editText = (EditText) findViewById(R.id.numEditTextModifProfil);
         editText.setText(userApp.getNumber());
-        editText = (EditText) findViewById(R.id.postalCodeEditTextProfil);
+        editText = (EditText) findViewById(R.id.postalCodeEditTextModifProfil);
         editText.setText(userApp.getPostalCode());
-        editText = (EditText) findViewById(R.id.cityEditTextProfil);
+        editText = (EditText) findViewById(R.id.cityEditTextModifProfil);
         editText.setText(userApp.getCity());
-        editText = (EditText) findViewById(R.id.countryTextEditProfil);
+        editText = (EditText) findViewById(R.id.countryTextEditModifProfil);
         editText.setText(userApp.getCountry());
     }
 

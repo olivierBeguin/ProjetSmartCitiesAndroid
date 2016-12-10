@@ -27,9 +27,4 @@
     <style name="spinnerStyle">
         <item name="android:background">@color/colorAccent</item>
     </style>
-
-    <style name="progressBarStyle">
-        <item name="android:progressBarStyle">@color/colorButton</item>
-    </style>
-
 </resources>
