@@ -67,7 +67,7 @@
             />
 
         <Button
-            android:id="@+id/btn_add_service"
+            android:id="@+id/btn_service"
             android:text="@string/btn_ask_service"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

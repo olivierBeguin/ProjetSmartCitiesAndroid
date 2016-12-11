@@ -7,4 +7,5 @@ package com.henallux.smartcities.DAO;
 public interface IGenericDAO
 {
     public String getJsonStringWithURL(String token, String urlAdress) throws Exception;
+    public void postJsonStringWithURL(String token, String jsonString, String urlAdress) throws Exception;
 }

@@ -13,7 +13,6 @@ import java.util.List;
 
 public interface IServiceDAO
 {
-    public Service getServicesWithUser(UserApp userApp) throws Exception;
     public ArrayList<Service> getServices(String token) throws Exception;
-    public void createService(Service service);
+    public void postServices(String token, Service service) throws Exception;
 }

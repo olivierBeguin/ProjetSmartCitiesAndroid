@@ -8,6 +8,7 @@ public class Service implements Serializable
 {
     private String descriptionService, labelService;
     private Date datePublicationService;
+    private Boolean serviceDone;
     private UserApp UserNeedService;
     private CategoryService category;
     private DoService doService;
@@ -17,7 +18,19 @@ public class Service implements Serializable
         this.descriptionService = descriptionService;
         this.labelService = labelService;
         this.datePublicationService = datePublicationService;
+        this.serviceDone = false;
     }
+
+    public  Service(String labelService, String descriptionService, Date datePublicationService, UserApp userNeedService, CategoryService categoryService)
+    {
+        this.descriptionService = descriptionService;
+        this.labelService = labelService;
+        this.datePublicationService = datePublicationService;
+        this.serviceDone = false;
+        this.UserNeedService = userNeedService;
+        this.category = categoryService;
+    }
+
 
     public CategoryService getCategory() {
         return category;
@@ -43,6 +56,10 @@ public class Service implements Serializable
         return labelService;
     }
 
+    public Boolean getServiceDone() {
+        return serviceDone;
+    }
+
     public void setCategory(CategoryService category) {
         this.category = category;
     }
@@ -65,6 +82,10 @@ public class Service implements Serializable
 
     public void setLabelService(String labelService) {
         this.labelService = labelService;
+    }
+
+    public void setServiceDone(Boolean serviceDone) {
+        this.serviceDone = serviceDone;
     }
 }
 

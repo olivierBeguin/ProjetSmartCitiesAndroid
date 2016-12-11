@@ -26,24 +26,6 @@ import java.util.List;
 
 public class ServiceDAO extends GenericDAO implements IServiceDAO
 {
-    @Override
-    public Service getServicesWithUser(UserApp userApp) throws Exception
-    {
-        /*URL url = new URL("http://g-aideappweb.azurewebsites.net/api/services/1");
-        URLConnection urlConnection = url.openConnection();
-        BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
-        StringBuilder sb = new StringBuilder();
-        String stringJSON = "",line;
-        while((line = br.readLine()) != null)
-        {
-            sb.append(line);
-        }
-        br.close();
-        stringJSON = sb.toString();
-        //Log.i("Test", stringJSON);*/
-        return null;//jsonToService(stringJSON);
-    }
-
     private ArrayList<Service> jsonToServices(String stringJSON) throws Exception
     {
         ArrayList<Service> services = new ArrayList<>();
@@ -60,6 +42,18 @@ public class ServiceDAO extends GenericDAO implements IServiceDAO
         return services;
     }
 
+    private String serviceToJson(Service service) throws Exception
+    {
+        JSONObject jsonService = new JSONObject();
+        jsonService.accumulate("Label", service.getLabelService());
+        jsonService.accumulate("DescriptionService", service.getDescriptionService());
+        //jsonService.accumulate("DatePublicationService", service.getDatePublicationService());
+        jsonService.accumulate("ServiceDone", service.getServiceDone());
+        jsonService.accumulate("UserNeedService", service.getUserNeedService());
+        jsonService.accumulate("Category", service.getCategory());
+        return jsonService.toString();
+    }
+
     @Override
     public ArrayList<Service> getServices(String token) throws Exception
     {
@@ -68,7 +62,9 @@ public class ServiceDAO extends GenericDAO implements IServiceDAO
     }
 
     @Override
-    public void createService(Service service) {
-
+    public void postServices(String token, Service service) throws Exception
+    {
+        String stringJSON = serviceToJson(service);
+        postJsonStringWithURL(token, stringJSON, "http://g-aideappweb.azurewebsites.net/api/services");
     }
 }

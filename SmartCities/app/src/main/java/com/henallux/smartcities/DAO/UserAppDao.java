@@ -125,9 +125,9 @@ public class UserAppDAO extends GenericDAO implements IUserAppDAO
         urlConnection.connect();
 
         JSONObject jsonUser = new JSONObject();
-        jsonUser.accumulate("Username", userApp.getEmail());
         jsonUser.accumulate("Password", userApp.getPassword());
         jsonUser.accumulate("ConfirmPassword", userApp.getPassword());
+        jsonUser.accumulate("Email", userApp.getEmail());
         jsonUser.accumulate("FirstName", userApp.getFirstName());
         jsonUser.accumulate("LastName", userApp.getLastName());
         jsonUser.accumulate("Street", userApp.getStreet());
@@ -137,12 +137,8 @@ public class UserAppDAO extends GenericDAO implements IUserAppDAO
         jsonUser.accumulate("Country", userApp.getCountry());
         jsonUser.accumulate("Category", userApp.getCategory());
         jsonUser.accumulate("PhoneNumber", userApp.getPhoneNumber());
-        jsonUser.accumulate("DateInscription", userApp.getDateInscription());
-        jsonUser.accumulate("NumGetService", userApp.getSumServiceGiven());
-        jsonUser.accumulate("NumServiceGive", userApp.getSumServiceDone());
 
         String jsonString = jsonUser.toString();
-
 
         writer.write(jsonString);
         writer.flush();

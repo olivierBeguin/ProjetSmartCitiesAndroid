@@ -6,11 +6,13 @@ public class Comment implements Serializable
 {
     private String commentDescription;
     private Double rating;
+    private DoService doServiceComment;
 
-    public Comment(String commentDescription, Double rating)
+    public Comment(String commentDescription, Double rating, DoService doServiceComment)
     {
         this.commentDescription = commentDescription;
         this.rating = rating;
+        this.doServiceComment = doServiceComment;
     }
 
     public String getComment() {
@@ -25,4 +27,11 @@ public class Comment implements Serializable
         this.rating = rating;
     }
 
+    public DoService getDoServiceComment() {
+        return doServiceComment;
+    }
+
+    public void setDoServiceComment(DoService doServiceComment) {
+        this.doServiceComment = doServiceComment;
+    }
 }
