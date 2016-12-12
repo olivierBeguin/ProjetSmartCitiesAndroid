@@ -37,7 +37,7 @@ public class ServiceDAO extends GenericDAO implements IServiceDAO
             SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
             services.add(new Service(jsonService.getString("Label"), jsonService.getString("DescriptionService"), sdf.parse(jsonService.getString("DatePublicationService"))));
             JSONObject jsonCategory = jsonService.getJSONObject("Category");
-            services.get(i).setCategory(new CategoryService(jsonCategory.getString("Label")));
+            services.get(i).setCategory(new CategoryService(jsonCategory.getInt("Id"), jsonCategory.getString("Label")));
         }
         return services;
     }
@@ -45,12 +45,13 @@ public class ServiceDAO extends GenericDAO implements IServiceDAO
     private String serviceToJson(Service service) throws Exception
     {
         JSONObject jsonService = new JSONObject();
+        SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
         jsonService.accumulate("Label", service.getLabelService());
         jsonService.accumulate("DescriptionService", service.getDescriptionService());
-        //jsonService.accumulate("DatePublicationService", service.getDatePublicationService());
+        jsonService.accumulate("DatePublicationService", sdf.format(service.getDatePublicationService()));
         jsonService.accumulate("ServiceDone", service.getServiceDone());
-        jsonService.accumulate("UserNeedService", service.getUserNeedService());
-        jsonService.accumulate("Category", service.getCategory());
+        jsonService.accumulate("UserNeedService", service.getUserNeedService().getEmail());
+        jsonService.accumulate("Category", service.getCategory().getId());
         return jsonService.toString();
     }
 
@@ -65,6 +66,6 @@ public class ServiceDAO extends GenericDAO implements IServiceDAO
     public void postServices(String token, Service service) throws Exception
     {
         String stringJSON = serviceToJson(service);
-        postJsonStringWithURL(token, stringJSON, "http://g-aideappweb.azurewebsites.net/api/services");
+        postJsonStringWithURL(token, stringJSON, "http://g-aideappweb.azurewebsites.net/api/services/?userName="+service.getUserNeedService().getEmail()+"&idCat="+service.getCategory().getId());
     }
 }

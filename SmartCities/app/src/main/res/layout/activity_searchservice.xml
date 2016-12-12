@@ -21,19 +21,26 @@
 
         <Spinner
 
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_below="@+id/searchview"
-            android:layout_centerHorizontal="true"
+            android:layout_toLeftOf="@+id/btn_refresh"
             android:id="@+id/spinnerSearchService"
-            />
+            android:layout_below="@+id/searchview" />
 
-        <ListView
+    <Button
+        android:id="@+id/btn_refresh"
+        android:layout_height="48dp"
+        android:layout_width="48dp"
+        android:layout_below="@+id/searchview"
+        android:background="@drawable/ic_refresh"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ListView
             android:id="@+id/listServices"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/spinnerSearchService"
+            android:layout_below="@+id/btn_refresh"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:background="@color/colorAccent"

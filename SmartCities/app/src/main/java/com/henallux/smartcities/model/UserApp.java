@@ -10,12 +10,13 @@ import java.util.Date;
 
 public class UserApp implements Serializable
 {
-    private String FirstName, LastName, Password, Email, PhoneNumber, Street, City, Country, PostalCode, Number, Category;
+    private String id, FirstName, LastName, Password, Email, PhoneNumber, Street, City, Country, PostalCode, Number, Category;
     private Date DateInscription;
     private Integer SumServiceDone, SumServiceGiven;
 
-    public UserApp(String firstName, String lastName, String password, String email, String phoneNumber, String street, String city, String country, String category, Date dateInscription, String postalCode, String number, Integer sumServiceDone, Integer sumServiceGiven)
+    public UserApp(String id, String firstName, String lastName, String password, String email, String phoneNumber, String street, String city, String country, String category, Date dateInscription, String postalCode, String number, Integer sumServiceDone, Integer sumServiceGiven)
     {
+        this.id = id;
         this.FirstName = firstName;
         this.LastName = lastName;
         this.Password = password;
@@ -50,8 +51,9 @@ public class UserApp implements Serializable
         this.SumServiceGiven = 0;
     }
 
-    public UserApp(String firstName, String lastName, String email, String phoneNumber, String street, String city, String country, String category, Date dateInscription, String postalCode, String number, Integer sumServiceDone, Integer sumServiceGiven)
+    public UserApp(String id, String firstName, String lastName, String email, String phoneNumber, String street, String city, String country, String category, Date dateInscription, String postalCode, String number, Integer sumServiceDone, Integer sumServiceGiven)
     {
+        this.id = id;
         this.FirstName = firstName;
         this.LastName = lastName;
         this.Email = email;
@@ -70,6 +72,14 @@ public class UserApp implements Serializable
     public UserApp()
     {
 
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getFirstName()

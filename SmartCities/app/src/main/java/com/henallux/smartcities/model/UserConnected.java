@@ -63,7 +63,7 @@ public class UserConnected
         SharedPreferences sharedPreferences = activity.getSharedPreferences("myPref", Context.MODE_PRIVATE);
         SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
         try {
-            userConnected = new UserApp(sharedPreferences.getString("Firstname", ""), sharedPreferences.getString("Lastname", ""), sharedPreferences.getString("Password", ""), sharedPreferences.getString("PhoneNumber", ""), sharedPreferences.getString("Street", ""), sharedPreferences.getString("City", ""), sharedPreferences.getString("Country", ""), sharedPreferences.getString("Category", ""), sdf.parse(sharedPreferences.getString("DateInscription", "")), sharedPreferences.getString("PostalCode", ""), sharedPreferences.getString("Number", ""), sharedPreferences.getInt("SumServiceDone", 0), sharedPreferences.getInt("SumServiceGiven", 0));
+            userConnected = new UserApp(sharedPreferences.getString("Id", ""), sharedPreferences.getString("Firstname", ""), sharedPreferences.getString("Lastname", ""), sharedPreferences.getString("Password", ""), sharedPreferences.getString("PhoneNumber", ""), sharedPreferences.getString("Street", ""), sharedPreferences.getString("City", ""), sharedPreferences.getString("Country", ""), sharedPreferences.getString("Category", ""), sdf.parse(sharedPreferences.getString("DateInscription", "")), sharedPreferences.getString("PostalCode", ""), sharedPreferences.getString("Number", ""), sharedPreferences.getInt("SumServiceDone", 0), sharedPreferences.getInt("SumServiceGiven", 0));
         }
         catch (ParseException e)
         {

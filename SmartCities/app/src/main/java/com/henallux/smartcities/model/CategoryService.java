@@ -5,26 +5,36 @@ import java.io.Serializable;
 
 public class CategoryService implements Serializable
 {
-    private String description;
+    private String label;
+    private Integer id;
 
-    public CategoryService(String description)
+    public CategoryService(Integer id, String label)
     {
-        this.description = description;
+        this.id = id;
+        this.label = label;
     }
 
-    public String getDescription()
-    {
-        return description;
+    public Integer getId() {
+        return id;
     }
 
-    public void setDescription(String description)
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getLabel()
     {
-        this.description = description;
+        return label;
+    }
+
+    public void setLabel(String label)
+    {
+        this.label = label;
     }
 
     @Override
     public String toString()
     {
-        return description;
+        return label;
     }
 }

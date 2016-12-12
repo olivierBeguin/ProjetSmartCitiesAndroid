@@ -5,12 +5,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
@@ -32,7 +34,7 @@ public class SearchServiceActivity extends Fragment {
     public static final String ARG_PAGE = "ARG_PAGE";
 
     private int mPage;
-    private ProgressBar progressBar;
+    private Button btn_refresh;
 
     public static SearchServiceActivity newInstance(int page) {
         Bundle args = new Bundle();
@@ -62,6 +64,23 @@ public class SearchServiceActivity extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_searchservice, container, false);
         return view;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        btn_refresh = (Button) getActivity().findViewById(R.id.btn_refresh);
+        btn_refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {actionBtnRefresh();}
+        });
+    }
+
+    private void actionBtnRefresh()
+    {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("myPref", Context.MODE_PRIVATE);
+        String token = sharedPreferences.getString("Token", "");
+        new LoadServices().execute(token);
     }
 
     private class LoadCategory extends AsyncTask<String, Integer, ArrayList<CategoryService>>
@@ -101,7 +120,7 @@ public class SearchServiceActivity extends Fragment {
             category.add("Selectionnez une catégorie");
             for (CategoryService cat : categoryServices)
             {
-                category.add(cat.getDescription());
+                category.add(cat.getLabel());
             }
             ArrayAdapter adapter = new ArrayAdapter(getActivity(), R.layout.support_simple_spinner_dropdown_item, category);
             spinner.setAdapter(adapter);

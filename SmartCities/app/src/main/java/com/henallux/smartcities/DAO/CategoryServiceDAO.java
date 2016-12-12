@@ -28,7 +28,7 @@ public class CategoryServiceDAO extends GenericDAO implements ICategoryServiceDA
         for (int i = 0; i < jsonArray.length(); i++)
         {
             JSONObject jsonCategoryService = jsonArray.getJSONObject(i);
-            categoryServices.add(new CategoryService(jsonCategoryService.getString("Label")));
+            categoryServices.add(new CategoryService(jsonCategoryService.getInt("Id"), jsonCategoryService.getString("Label")));
         }
         return categoryServices;
     }

@@ -74,7 +74,7 @@ public class NeedServiceActivity extends Fragment {
         String label = String.valueOf(((EditText) getActivity().findViewById(R.id.libelle_service_edit_text)).getText());
         String description = String.valueOf(((EditText) getActivity().findViewById(R.id.description_service_edit_text)).getText());
         UserApp userApp = UserConnected.getInstance();
-        CategoryService categoryService = new CategoryService(((Spinner)getActivity().findViewById(R.id.spinnerNeedService)).getSelectedItem().toString());
+        CategoryService categoryService = new CategoryService(((Spinner)getActivity().findViewById(R.id.spinnerNeedService)).getSelectedItemPosition() ,((Spinner)getActivity().findViewById(R.id.spinnerNeedService)).getSelectedItem().toString());
         Service service = new Service(label, description, new Date(), userApp, categoryService);
         new SendService().execute(service);
     }
@@ -137,7 +137,7 @@ public class NeedServiceActivity extends Fragment {
             category.add("Selectionnez une catégorie");
             for (CategoryService cat : categoryServices)
             {
-                category.add(cat.getDescription());
+                category.add(cat.getLabel());
             }
             ArrayAdapter adapter = new ArrayAdapter(getActivity(), R.layout.support_simple_spinner_dropdown_item, category);
             spinner.setAdapter(adapter);
