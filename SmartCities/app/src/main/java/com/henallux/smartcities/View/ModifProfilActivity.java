@@ -10,19 +10,20 @@ import com.henallux.smartcities.model.UserConnected;
 
 public class ModifProfilActivity extends AppCompatActivity
 {
-
+    UserConnected userConnected;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modif_profil);
+        userConnected = new UserConnected();
         setModifyContent();
-        getModifyContent();
+        //getModifyContent();
     }
 
     private void setModifyContent()
     {
-        UserApp userApp = UserConnected.getInstance();
+        UserApp userApp = userConnected.getUserConnected(ModifProfilActivity.this);
         EditText editText = (EditText) findViewById(R.id.lastnameEditTextModifProfil);
         editText.setText(userApp.getLastName());
         editText = (EditText) findViewById(R.id.firstnameTextEditTextModifProfil);

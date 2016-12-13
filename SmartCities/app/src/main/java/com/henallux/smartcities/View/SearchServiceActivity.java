@@ -1,7 +1,6 @@
 package com.henallux.smartcities.view;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -25,8 +25,8 @@ import com.henallux.smartcities.R;
 import com.henallux.smartcities.model.CategoryService;
 import com.henallux.smartcities.model.Service;
 import com.henallux.smartcities.model.ServicesAdapter;
-import com.henallux.smartcities.model.UserApp;
 import com.henallux.smartcities.model.UserConnected;
+import com.henallux.smartcities.service.Business;
 
 import java.util.ArrayList;
 
@@ -35,6 +35,11 @@ public class SearchServiceActivity extends Fragment {
 
     private int mPage;
     private Button btn_refresh;
+    private Spinner spinner;
+    private ListView listView;
+    private UserConnected userConnected;
+    private ArrayList<CategoryService> categoryServices = null;
+    private ArrayList<Service> services = null, servicesCat;
 
     public static SearchServiceActivity newInstance(int page) {
         Bundle args = new Bundle();
@@ -48,10 +53,11 @@ public class SearchServiceActivity extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPage = getArguments().getInt(ARG_PAGE);
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("myPref", Context.MODE_PRIVATE);
-        String token = sharedPreferences.getString("Token", "");
+        userConnected = new UserConnected();
+        String token = userConnected.getToken(getActivity());
+        String email = userConnected.getUserConnected(getActivity()).getEmail();
         new LoadCategory().execute(token);
-        new LoadServices().execute(token);
+        new LoadServices().execute(token, email);
 
 
 
@@ -74,13 +80,19 @@ public class SearchServiceActivity extends Fragment {
             @Override
             public void onClick(View v) {actionBtnRefresh();}
         });
+
     }
 
     private void actionBtnRefresh()
     {
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("myPref", Context.MODE_PRIVATE);
-        String token = sharedPreferences.getString("Token", "");
-        new LoadServices().execute(token);
+        String token = userConnected.getToken(getActivity());
+        String email = userConnected.getUserConnected(getActivity()).getEmail();
+        new LoadServices().execute(token, email);
+    }
+
+    private void actionBtnAcceptService()
+    {
+
     }
 
     private class LoadCategory extends AsyncTask<String, Integer, ArrayList<CategoryService>>
@@ -93,7 +105,6 @@ public class SearchServiceActivity extends Fragment {
         @Override
         protected ArrayList<CategoryService> doInBackground(String... params)
         {
-            ArrayList<CategoryService> categoryServices = null;
             try
             {
                 CategoryServiceDAO categoryServiceDAO = new CategoryServiceDAO();
@@ -114,8 +125,8 @@ public class SearchServiceActivity extends Fragment {
         }
 
         @Override
-        protected void onPostExecute(ArrayList<CategoryService> categoryServices) {
-            Spinner spinner = (Spinner) getActivity().findViewById(R.id.spinnerSearchService);
+        protected void onPostExecute(final ArrayList<CategoryService> categoryServices) {
+            spinner = (Spinner) getActivity().findViewById(R.id.spinnerSearchService);
             ArrayList<String> category = new ArrayList<>();
             category.add("Selectionnez une catégorie");
             for (CategoryService cat : categoryServices)
@@ -127,21 +138,16 @@ public class SearchServiceActivity extends Fragment {
         }
     }
 
-    private class LoadServices extends AsyncTask<String, Integer, ArrayList<Service>>
+    private class LoadServices extends AsyncTask<String, Void, ArrayList<Service>>
     {
-        @Override
-        protected void onPreExecute()
-        {
-            super.onPreExecute();
-        }
         @Override
         protected ArrayList<Service> doInBackground(String... params)
         {
-            ArrayList<Service> services = null;
+
             try
             {
                 ServiceDAO serviceDAO = new ServiceDAO();
-                services = serviceDAO.getServices(params[0]);
+                services = serviceDAO.getServices(params[0], params[1]);
             }
             catch (Exception e)
             {
@@ -152,16 +158,38 @@ public class SearchServiceActivity extends Fragment {
         }
 
         @Override
-        protected void onProgressUpdate(Integer... values)
-        {
-            super.onProgressUpdate(values);
+        protected void onPostExecute(final ArrayList<Service> services) {
+            spinner = (Spinner) getActivity().findViewById(R.id.spinnerSearchService);
+            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    servicesCat = Business.triServiceCat(services, (String) spinner.getSelectedItem());
+                    listView = (ListView) getActivity().findViewById(R.id.listServices);
+                    ServicesAdapter servicesAdapter = new ServicesAdapter(getActivity(), servicesCat);
+                    listView.setAdapter(servicesAdapter);
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+            servicesCat = Business.triServiceCat(services, (String) spinner.getSelectedItem());
+            listView = (ListView) getActivity().findViewById(R.id.listServices);
+            ServicesAdapter servicesAdapter = new ServicesAdapter(getActivity(), servicesCat);
+            listView.setAdapter(servicesAdapter);
+
         }
+    }
+
+    private class AcceptService extends AsyncTask<Service, Void, String>
+    {
 
         @Override
-        protected void onPostExecute(ArrayList<Service> services) {
-            ListView listView = (ListView) getActivity().findViewById(R.id.listServices);
-            ServicesAdapter servicesAdapter = new ServicesAdapter(getActivity(), services);
-            listView.setAdapter(servicesAdapter);
+        protected String doInBackground(Service... params)
+        {
+
+            return null;
         }
     }
 

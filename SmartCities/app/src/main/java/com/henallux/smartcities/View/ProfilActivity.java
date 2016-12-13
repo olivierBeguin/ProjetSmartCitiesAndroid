@@ -67,7 +67,8 @@ public class ProfilActivity extends LayoutActivity
 
     private void loadUser()
     {
-        UserApp userApp = UserConnected.getInstance();
+        UserConnected userConnected = new UserConnected();
+        UserApp userApp = userConnected.getUserConnected(ProfilActivity.this);
         EditText editText = (EditText) findViewById(R.id.lastnameEditTextProfil);
         editText.setText(userApp.getLastName());
         editText = (EditText) findViewById(R.id.firstnameTextEditTextProfil);

@@ -82,8 +82,8 @@ public class UserAppDAO extends GenericDAO implements IUserAppDAO
         }
     }
 
-     public UserApp getUser(String token, String email) throws Exception
-     {
+    public UserApp getUser(String token, String email) throws Exception
+    {
         String stringJSON = getJsonStringWithURL(token, "http://g-aideappweb.azurewebsites.net/api/users/?username="+email);
         return jsonToUserApp(stringJSON);
     }

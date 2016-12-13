@@ -26,6 +26,7 @@ public class ConnectionActivity extends AppCompatActivity
 
     private Button connectionButton;
     private ProgressBar progressBar;
+    private UserConnected userConnected;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -41,6 +42,7 @@ public class ConnectionActivity extends AppCompatActivity
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         progressBar.getIndeterminateDrawable().setColorFilter(0xFF740024, PorterDuff.Mode.MULTIPLY);
         progressBar.setVisibility(View.GONE);
+        userConnected = new UserConnected();
 
     }
 
@@ -50,14 +52,6 @@ public class ConnectionActivity extends AppCompatActivity
         mail = String.valueOf(((EditText) findViewById(R.id.editTextMail)).getText());
         pw = String.valueOf(((EditText) findViewById(R.id.editPassword)).getText());
         new LoadUserApp().execute(mail, pw);
-    }
-
-    private void setTokenInSharedPreferences(String token)
-    {
-        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.myPref), Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("Token", token);
-        editor.commit();
     }
 
     private class LoadUserApp extends AsyncTask<String, Integer, UserApp>
@@ -77,9 +71,8 @@ public class ConnectionActivity extends AppCompatActivity
             try
             {
                 UserAppDAO userAppDAO = new UserAppDAO();
-                Log.i("Test", params[0] + " " + params[1]);
                 token = userAppDAO.getUserWithMailandPw(params[0], params[1]);
-                setTokenInSharedPreferences(token);
+                userConnected.setToken(ConnectionActivity.this, token);
                 userApp = userAppDAO.getUser(token, params[0]);
                 return userApp;
             }
@@ -102,7 +95,8 @@ public class ConnectionActivity extends AppCompatActivity
             progressBar.setVisibility(View.GONE);
             if (userApp != null && exceptionToBeThrow == null)
             {
-                UserConnected.setInstance(userApp);
+
+                userConnected.setUserConnected(ConnectionActivity.this, userApp);
                 Intent intent = new Intent(ConnectionActivity.this, ServicesActivity.class);
                 startActivity(intent);
             }
