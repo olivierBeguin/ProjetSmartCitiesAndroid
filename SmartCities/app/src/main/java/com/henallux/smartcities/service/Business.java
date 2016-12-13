@@ -4,7 +4,11 @@ import android.app.Activity;
 
 import com.henallux.smartcities.R;
 import com.henallux.smartcities.exception.FormException;
+import com.henallux.smartcities.model.CategoryService;
+import com.henallux.smartcities.model.Service;
 import com.henallux.smartcities.model.UserApp;
+
+import java.util.ArrayList;
 
 
 /**
@@ -37,5 +41,16 @@ public class Business
         {
             userApp.setCategory("old");
         }
+    }
+
+    public static ArrayList<Service> triServiceCat(ArrayList<Service> services, String categoryService)
+    {
+        ArrayList<Service> servicesCat = new ArrayList<>();
+        for (Service service : services)
+        {
+            if(service.getCategory().getLabel().equals(categoryService) || categoryService.equals("Selectionnez une catégorie"))
+                servicesCat.add(service);
+        }
+        return servicesCat;
     }
 }

@@ -32,6 +32,7 @@ public class NeedServiceActivity extends Fragment {
     public static final String ARG_PAGE = "ARG_PAGE";
 
     private int mPage;
+    private UserConnected userConnected;
 
     public static NeedServiceActivity newInstance(int page) {
         Bundle args = new Bundle();
@@ -45,8 +46,8 @@ public class NeedServiceActivity extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPage = getArguments().getInt(ARG_PAGE);
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("myPref", Context.MODE_PRIVATE);
-        String token = sharedPreferences.getString("Token", "");
+        userConnected = new UserConnected();
+        String token = userConnected.getToken(getActivity());
         new LoadCategory().execute(token);
 
     }
@@ -73,7 +74,8 @@ public class NeedServiceActivity extends Fragment {
     {
         String label = String.valueOf(((EditText) getActivity().findViewById(R.id.libelle_service_edit_text)).getText());
         String description = String.valueOf(((EditText) getActivity().findViewById(R.id.description_service_edit_text)).getText());
-        UserApp userApp = UserConnected.getInstance();
+        UserConnected userConnected = new UserConnected();
+        UserApp userApp = userConnected.getUserConnected(getActivity());
         CategoryService categoryService = new CategoryService(((Spinner)getActivity().findViewById(R.id.spinnerNeedService)).getSelectedItemPosition() ,((Spinner)getActivity().findViewById(R.id.spinnerNeedService)).getSelectedItem().toString());
         Service service = new Service(label, description, new Date(), userApp, categoryService);
         new SendService().execute(service);
@@ -88,8 +90,7 @@ public class NeedServiceActivity extends Fragment {
             try
             {
                 ServiceDAO serviceDAO = new ServiceDAO();
-                SharedPreferences sharedPreferences = getActivity().getSharedPreferences("myPref", Context.MODE_PRIVATE);
-                String token = sharedPreferences.getString("Token", "");
+                String token = userConnected.getToken(getActivity());
                 serviceDAO.postServices(token, params[0]);
             }
             catch(Exception e)

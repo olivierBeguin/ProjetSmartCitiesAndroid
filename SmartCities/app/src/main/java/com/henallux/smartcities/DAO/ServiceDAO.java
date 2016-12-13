@@ -35,7 +35,7 @@ public class ServiceDAO extends GenericDAO implements IServiceDAO
             JSONObject jsonService = jsonArrayService.getJSONObject(i);
 
             SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
-            services.add(new Service(jsonService.getString("Label"), jsonService.getString("DescriptionService"), sdf.parse(jsonService.getString("DatePublicationService"))));
+            services.add(new Service(jsonService.getInt("Id"), jsonService.getString("Label"), jsonService.getString("DescriptionService"), sdf.parse(jsonService.getString("DatePublicationService"))));
             JSONObject jsonCategory = jsonService.getJSONObject("Category");
             services.get(i).setCategory(new CategoryService(jsonCategory.getInt("Id"), jsonCategory.getString("Label")));
         }
@@ -45,7 +45,7 @@ public class ServiceDAO extends GenericDAO implements IServiceDAO
     private String serviceToJson(Service service) throws Exception
     {
         JSONObject jsonService = new JSONObject();
-        SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         jsonService.accumulate("Label", service.getLabelService());
         jsonService.accumulate("DescriptionService", service.getDescriptionService());
         jsonService.accumulate("DatePublicationService", sdf.format(service.getDatePublicationService()));
@@ -56,9 +56,9 @@ public class ServiceDAO extends GenericDAO implements IServiceDAO
     }
 
     @Override
-    public ArrayList<Service> getServices(String token) throws Exception
+    public ArrayList<Service> getServices(String token, String email) throws Exception
     {
-        String stringJSON = getJsonStringWithURL(token, "http://g-aideappweb.azurewebsites.net/api/services");
+        String stringJSON = getJsonStringWithURL(token, "http://g-aideappweb.azurewebsites.net/api/services/?userName="+email);
         return jsonToServices(stringJSON);
     }
 
@@ -66,6 +66,6 @@ public class ServiceDAO extends GenericDAO implements IServiceDAO
     public void postServices(String token, Service service) throws Exception
     {
         String stringJSON = serviceToJson(service);
-        postJsonStringWithURL(token, stringJSON, "http://g-aideappweb.azurewebsites.net/api/services/?userName="+service.getUserNeedService().getEmail()+"&idCat="+service.getCategory().getId());
+        postJsonStringWithURL(token, stringJSON, "http://g-aideappweb.azurewebsites.net/api/services");
     }
 }

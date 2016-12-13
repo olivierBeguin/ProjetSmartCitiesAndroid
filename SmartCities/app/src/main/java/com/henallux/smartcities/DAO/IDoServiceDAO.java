@@ -11,4 +11,5 @@ import java.util.ArrayList;
 public interface IDoServiceDAO
 {
     public ArrayList<DoService> getDoServiceOfUser(String token, String username) throws Exception;
+    public void postDoService(String token, DoService doService) throws Exception;
 }

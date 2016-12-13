@@ -10,29 +10,20 @@ public class DoService
 {
     private Date dateService;
     private UserApp userDoService;
-    private Comment commentOfService;
     private Service serviceDone;
+    private String comment;
+    private Double rating;
 
-    public DoService(Date dateService, UserApp userDoService, Comment commentOfService, Service serviceDone)
-    {
-        this.dateService = dateService;
-        this.userDoService = userDoService;
-        this.commentOfService =commentOfService;
-        this.serviceDone = serviceDone;
-    }
-
-    public DoService(Date dateService, UserApp userDoService, Service serviceDone)
+    public DoService(Date dateService, UserApp userDoService, Service serviceDone, String comment, Double rating)
     {
         this.dateService = dateService;
         this.userDoService = userDoService;
         this.serviceDone = serviceDone;
+        this.comment = comment;
+        this.rating = rating;
     }
 
     public Date getDateService() { return dateService; }
-
-    public Comment getCommentOfService() {
-        return commentOfService;
-    }
 
     public Service getServiceDone() {
         return serviceDone;
@@ -42,8 +33,12 @@ public class DoService
         return userDoService;
     }
 
-    public void setCommentOfService(Comment commentOfService) {
-        this.commentOfService = commentOfService;
+    public String getComment() {
+        return comment;
+    }
+
+    public Double getRating() {
+        return rating;
     }
 
     public void setDateService(Date dateService) {
@@ -56,6 +51,14 @@ public class DoService
 
     public void setUserDoService(UserApp userDoService) {
         this.userDoService = userDoService;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public void setRating(Double rating) {
+        this.rating = rating;
     }
 }
 

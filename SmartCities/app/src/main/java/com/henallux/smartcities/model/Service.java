@@ -6,6 +6,7 @@ import java.util.Date;
 
 public class Service implements Serializable
 {
+    private Integer id;
     private String descriptionService, labelService;
     private Date datePublicationService;
     private Boolean serviceDone;
@@ -13,8 +14,9 @@ public class Service implements Serializable
     private CategoryService category;
     private DoService doService;
 
-    public  Service(String labelService, String descriptionService, Date datePublicationService)
+    public  Service(Integer id, String labelService, String descriptionService, Date datePublicationService)
     {
+        this.id = id;
         this.descriptionService = descriptionService;
         this.labelService = labelService;
         this.datePublicationService = datePublicationService;
@@ -31,6 +33,9 @@ public class Service implements Serializable
         this.category = categoryService;
     }
 
+    public Integer getId() {
+        return id;
+    }
 
     public CategoryService getCategory() {
         return category;
@@ -62,6 +67,10 @@ public class Service implements Serializable
 
     public void setCategory(CategoryService category) {
         this.category = category;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public void setDatePublicationService(Date datePublicationService) {

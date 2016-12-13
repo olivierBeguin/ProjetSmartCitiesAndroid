@@ -9,15 +9,15 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:background="@color/colorAccent"
-        android:layout_above="@+id/btn_see_comment"/>
+        android:layout_above="@+id/btn_add_comment"/>
 
     <Button
-        android:id="@+id/btn_see_comment"
+        android:id="@+id/btn_add_comment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:text="@string/see_comment"
+        android:text="@string/add_comment"
         style="@style/btnColor"
         />
 </RelativeLayout>

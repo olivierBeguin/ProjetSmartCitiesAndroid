@@ -2,12 +2,15 @@ package com.henallux.smartcities.DAO;
 
 import com.henallux.smartcities.model.DoService;
 import com.henallux.smartcities.model.Service;
+import com.henallux.smartcities.model.UserApp;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by oli07 on 10-12-16.
@@ -18,8 +21,14 @@ public class DoServiceDAO extends GenericDAO implements IDoServiceDAO
     @Override
     public ArrayList<DoService> getDoServiceOfUser(String token, String username) throws Exception
     {
-        String stringJSON = getJsonStringWithURL(token, "http://g-aideappweb.azurewebsites.net/api/users/?username="+username);
+        String stringJSON = getJsonStringWithURL(token, "http://g-aideappweb.azurewebsites.net/api/doServicesUser/?username="+username);
         return jsonToDoServices(stringJSON);
+    }
+
+    public void postDoService(String token, DoService doService) throws Exception
+    {
+        String jsonString = doServiceToJson(doService);
+        postJsonStringWithURL(token, jsonString, "http://g-aideappweb.azurewebsites.net/api/doServices");
     }
 
     private ArrayList<DoService> jsonToDoServices(String stringJSON) throws Exception
@@ -29,25 +38,28 @@ public class DoServiceDAO extends GenericDAO implements IDoServiceDAO
         for (int i = 0; i < jsonArrayDoServices.length(); i++)
         {
             JSONObject jsonDoService = jsonArrayDoServices.getJSONObject(i);
-            SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
-            //doServices.add(new DoService(sdf.parse(jsonDoService.getString("DateService")), );
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            JSONObject jsonUserDoService = jsonDoService.getJSONObject("UserDoService");
+            UserApp userApp = new UserApp(jsonUserDoService.getString("Id"), jsonUserDoService.getString("FirstName"), jsonUserDoService.getString("LastName"), jsonUserDoService.getString("Email"), jsonUserDoService.getString("PhoneNumber"), jsonUserDoService.getString("Street"), jsonUserDoService.getString("City"), jsonUserDoService.getString("Country"), jsonUserDoService.getString("Category"), new Date(), jsonUserDoService.getString("PostalCode"), jsonUserDoService.getString("Number"), jsonUserDoService.getInt("NumGetService"), jsonUserDoService.getInt("NumServiceGive"));
+            JSONObject jsonServiceDone = jsonDoService.getJSONObject("ServiceDone");
+            Service service = new Service(jsonServiceDone.getInt("Id"), jsonServiceDone.getString("Label"), jsonServiceDone.getString("DescriptionService"), sdf.parse(jsonServiceDone.getString("DatePublicationService")));
+            String comment;
+            if(jsonDoService.getString("CommentDescription").equals("null"))
+                comment = null;
+            else
+                comment = jsonDoService.getString("CommentDescription");
+            doServices.add(new DoService(sdf.parse(jsonDoService.getString("DateService")), userApp, service, comment, jsonDoService.getDouble("Rating")));
         }
-        return null;
+        return doServices;
     }
 
-    private ArrayList<Service> jsonToServices(String stringJSON) throws Exception
+    private String doServiceToJson(DoService doService) throws Exception
     {
-        ArrayList<Service> services = new ArrayList<>();
-        JSONArray jsonArrayService = new JSONArray(stringJSON);
-        for (int i = 0; i < jsonArrayService.length(); i++)
-        {
-            JSONObject jsonService = jsonArrayService.getJSONObject(i);
-
-            SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
-            services.add(new Service(jsonService.getString("Label"), jsonService.getString("DescriptionService"), sdf.parse(jsonService.getString("DatePublicationService"))));
-            JSONObject jsonCategory = jsonService.getJSONObject("Category");
-            //services.get(i).setCategory(new CategoryService(jsonCategory.getString("Label")));
-        }
-        return services;
+        JSONObject jsonDoService = new JSONObject();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        jsonDoService.accumulate("DateService", sdf.format(doService.getDateService()));
+        jsonDoService.accumulate("UserDoService", doService.getUserDoService().getEmail());
+        jsonDoService.accumulate("ServiceDone", doService.getServiceDone().getId());
+        return jsonDoService.toString();
     }
 }

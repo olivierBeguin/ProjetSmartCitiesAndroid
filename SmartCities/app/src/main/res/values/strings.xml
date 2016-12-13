@@ -43,6 +43,7 @@
     <string name="description_service">Description du service</string>
     <string name="see_comment">Voir le commentaire</string>
     <string name="btn_ask_service">Demander le service</string>
+    <string name="do_service">Effectuer ce service</string>
     <string-array name="category_array">
         <item>Jeune</item>
         <item>Senior</item>
