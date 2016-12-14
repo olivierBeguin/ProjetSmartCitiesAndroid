@@ -2,11 +2,15 @@ package com.henallux.smartcities.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.henallux.smartcities.R;
+import com.henallux.smartcities.exception.FormException;
 import com.henallux.smartcities.model.UserApp;
 import com.henallux.smartcities.model.UserConnected;
+import com.henallux.smartcities.service.Business;
 
 public class ModifProfilActivity extends AppCompatActivity
 {
@@ -15,6 +19,7 @@ public class ModifProfilActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         setContentView(R.layout.activity_modif_profil);
         userConnected = new UserConnected();
         setModifyContent();
@@ -46,10 +51,24 @@ public class ModifProfilActivity extends AppCompatActivity
 
     private void getModifyContent()
     {
-        //Recréer un objet user.
-        //Check s'ils sont !=
-        //Verifier les données
-        //Si oui effectuer changement BD
-        //Si non ne rien faire
+        try
+        {
+            //Recréer un objet user.
+            UserApp userModif = new UserApp(String.valueOf(((EditText) findViewById(R.id.firstnameTextEditTextModifProfil)).getText()), String.valueOf(((EditText) findViewById(R.id.lastnameEditTextModifProfil)).getText()), null ,String.valueOf(((EditText) findViewById(R.id.mailEditTextModifProfil)).getText()), String.valueOf(((EditText) findViewById(R.id.phoneEditTextModifProfil)).getText()), String.valueOf(((EditText) findViewById(R.id.streetEditTextModifProfil)).getText()), String.valueOf(((EditText) findViewById(R.id.cityEditTextModifProfil)).getText()), String.valueOf(((EditText) findViewById(R.id.countryTextEditModifProfil)).getText()), null, null, String.valueOf(((EditText) findViewById(R.id.postalCodeEditTextModifProfil)).getText()), String.valueOf(((EditText) findViewById(R.id.numEditTextModifProfil)).getText()));
+            //Check s'ils sont !=
+            UserApp userApp = userConnected.getUserConnected(ModifProfilActivity.this);
+            boolean isChanged = Business.compareTwoUserAndAddDifference(userApp, userModif);
+            //Verifier les données
+            if (isChanged)
+            {
+                Business.verifyEntry(userApp, userApp.getPassword(), ModifProfilActivity.this);
+                //PUTUSER
+            }
+        } catch (FormException e)
+        {
+            Toast.makeText(ModifProfilActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+        }
     }
+
+
 }

@@ -1,14 +1,11 @@
 package com.henallux.smartcities.view;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.henallux.smartcities.DAO.UserAppDAO;
 import com.henallux.smartcities.R;
 import com.henallux.smartcities.model.UserApp;
 import com.henallux.smartcities.model.UserConnected;

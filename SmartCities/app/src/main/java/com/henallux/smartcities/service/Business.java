@@ -73,4 +73,46 @@ public class Business
         }
         throw new RechercheServiceException("Contacter Louis");
     }
+
+    public static Boolean compareTwoUserAndAddDifference(UserApp userApp, UserApp userModif)
+    {
+        Boolean change = false;
+        if(!userApp.getFirstName().equals(userModif.getFirstName())) {
+            change = true;
+            userApp.setFirstName(userModif.getFirstName());
+        }
+        if(!userApp.getLastName().equals(userModif.getLastName())) {
+            change = true;
+            userApp.setLastName(userModif.getLastName());
+        }
+        if(!userApp.getEmail().equals(userModif.getEmail())) {
+            change = true;
+            userApp.setEmail(userModif.getEmail());
+        }
+        if(!userApp.getPhoneNumber().equals(userModif.getPhoneNumber())) {
+            change = true;
+            userApp.setPhoneNumber(userModif.getPhoneNumber());
+        }
+        if(!userApp.getStreet().equals(userModif.getStreet())) {
+            change = true;
+            userApp.setStreet(userModif.getStreet());
+        }
+        if(!userApp.getNumber().equals(userModif.getNumber())) {
+            change = true;
+            userApp.setNumber(userModif.getNumber());
+        }
+        if(!userApp.getPostalCode().equals(userModif.getPostalCode())) {
+            change = true;
+            userApp.setPostalCode(userModif.getPostalCode());
+        }
+        if(!userApp.getCity().equals(userModif.getCity())) {
+            change = true;
+            userApp.setCity(userModif.getCity());
+        }
+        if(!userApp.getCountry().equals(userModif.getCountry())) {
+            change = true;
+            userApp.setCountry(userModif.getCountry());
+        }
+        return change;
+    }
 }

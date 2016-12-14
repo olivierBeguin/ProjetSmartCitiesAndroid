@@ -1,7 +1,5 @@
 package com.henallux.smartcities.view;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,14 +12,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.henallux.smartcities.DAO.CategoryServiceDAO;
 import com.henallux.smartcities.DAO.ServiceDAO;
-import com.henallux.smartcities.DAO.UserAppDAO;
 import com.henallux.smartcities.R;
 import com.henallux.smartcities.exception.RechercheServiceException;
 import com.henallux.smartcities.model.CategoryService;

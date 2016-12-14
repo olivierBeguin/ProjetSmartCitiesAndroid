@@ -8,6 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:windowSoftInputMode="stateHidden"
     tools:context="com.henallux.smartcities.view.ModifProfilActivity">
 
     <TextView
@@ -32,7 +33,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:selectAllOnFocus="false"/>
+        android:selectAllOnFocus="false" />
 
     <TextView
         android:text="@string/firstnameText"
