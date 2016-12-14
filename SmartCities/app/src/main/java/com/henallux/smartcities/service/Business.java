@@ -1,11 +1,16 @@
 package com.henallux.smartcities.service;
 
 import android.app.Activity;
+import android.widget.CheckBox;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.henallux.smartcities.R;
 import com.henallux.smartcities.exception.FormException;
+import com.henallux.smartcities.exception.RechercheServiceException;
 import com.henallux.smartcities.model.CategoryService;
 import com.henallux.smartcities.model.Service;
+import com.henallux.smartcities.model.ServicesAdapter;
 import com.henallux.smartcities.model.UserApp;
 
 import java.util.ArrayList;
@@ -52,5 +57,20 @@ public class Business
                 servicesCat.add(service);
         }
         return servicesCat;
+    }
+
+    public static Service rechercheService(ListView listView, ArrayList<Service> services) throws RechercheServiceException
+    {
+        int pos = ((ServicesAdapter)listView.getAdapter()).getPositionChecked();
+        String label;
+        label = String.valueOf(((TextView) listView.getChildAt(pos).findViewById(R.id.label_list)).getText());
+
+
+        for (Service service : services)
+        {
+            if(service.getLabelService() == label)
+                return service;
+        }
+        throw new RechercheServiceException("Contacter Louis");
     }
 }

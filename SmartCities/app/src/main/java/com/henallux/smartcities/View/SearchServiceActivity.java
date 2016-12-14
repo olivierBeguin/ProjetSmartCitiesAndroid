@@ -16,12 +16,14 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.henallux.smartcities.DAO.CategoryServiceDAO;
 import com.henallux.smartcities.DAO.ServiceDAO;
 import com.henallux.smartcities.DAO.UserAppDAO;
 import com.henallux.smartcities.R;
+import com.henallux.smartcities.exception.RechercheServiceException;
 import com.henallux.smartcities.model.CategoryService;
 import com.henallux.smartcities.model.Service;
 import com.henallux.smartcities.model.ServicesAdapter;
@@ -34,9 +36,10 @@ public class SearchServiceActivity extends Fragment {
     public static final String ARG_PAGE = "ARG_PAGE";
 
     private int mPage;
-    private Button btn_refresh;
+    private Button btn_refresh, btn_accept_service;
     private Spinner spinner;
     private ListView listView;
+
     private UserConnected userConnected;
     private ArrayList<CategoryService> categoryServices = null;
     private ArrayList<Service> services = null, servicesCat;
@@ -80,6 +83,13 @@ public class SearchServiceActivity extends Fragment {
             @Override
             public void onClick(View v) {actionBtnRefresh();}
         });
+        btn_accept_service = (Button) getActivity().findViewById(R.id.btn_accept_service);
+        btn_accept_service.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                actionBtnAcceptService();
+            }
+        });
 
     }
 
@@ -92,7 +102,16 @@ public class SearchServiceActivity extends Fragment {
 
     private void actionBtnAcceptService()
     {
-
+        try
+        {
+            Service service = Business.rechercheService(listView, services);
+            service.setServiceDone(true);
+            new AcceptService().execute(service);
+        }
+        catch (RechercheServiceException e)
+        {
+            Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_LONG).show();
+        }
     }
 
     private class LoadCategory extends AsyncTask<String, Integer, ArrayList<CategoryService>>
@@ -182,14 +201,35 @@ public class SearchServiceActivity extends Fragment {
         }
     }
 
-    private class AcceptService extends AsyncTask<Service, Void, String>
+    private class AcceptService extends AsyncTask<Service, Void, Boolean>
     {
+        private Exception exceptionToBeThrow = null;
+        @Override
+        protected Boolean doInBackground(Service... params)
+        {
+            try {
+                ServiceDAO serviceDAO = new ServiceDAO();
+                String token = userConnected.getToken(getActivity());
+                serviceDAO.putService(token, params[0]);
+                return true;
+            }
+            catch (Exception e)
+            {
+                exceptionToBeThrow = e;
+                return false;
+            }
+
+        }
 
         @Override
-        protected String doInBackground(Service... params)
-        {
-
-            return null;
+        protected void onPostExecute(Boolean success) {
+            if (!success)
+                Toast.makeText(getActivity(), exceptionToBeThrow.getMessage(), Toast.LENGTH_LONG).show();
+            else
+            {
+                Toast.makeText(getActivity(), "Service accepté", Toast.LENGTH_LONG).show();
+                actionBtnRefresh();
+            }
         }
     }
 

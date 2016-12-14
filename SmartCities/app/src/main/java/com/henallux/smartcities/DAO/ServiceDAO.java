@@ -38,6 +38,8 @@ public class ServiceDAO extends GenericDAO implements IServiceDAO
             services.add(new Service(jsonService.getInt("Id"), jsonService.getString("Label"), jsonService.getString("DescriptionService"), sdf.parse(jsonService.getString("DatePublicationService"))));
             JSONObject jsonCategory = jsonService.getJSONObject("Category");
             services.get(i).setCategory(new CategoryService(jsonCategory.getInt("Id"), jsonCategory.getString("Label")));
+            JSONObject jsonUserApp = jsonService.getJSONObject("UserNeedService");
+            services.get(i).setUserNeedService(new UserApp(jsonUserApp.getString("Id"), jsonUserApp.getString("FirstName"), jsonUserApp.getString("LastName"), jsonUserApp.getString("Email"), jsonUserApp.getString("PhoneNumber"), jsonUserApp.getString("Street"), jsonUserApp.getString("City"), jsonUserApp.getString("Country"), jsonUserApp.getString("Category"), new Date(), jsonUserApp.getString("PostalCode"), jsonUserApp.getString("Number"), jsonUserApp.getInt("NumGetService"), jsonUserApp.getInt("NumServiceGive")));
         }
         return services;
     }
@@ -58,7 +60,7 @@ public class ServiceDAO extends GenericDAO implements IServiceDAO
     @Override
     public ArrayList<Service> getServices(String token, String email) throws Exception
     {
-        String stringJSON = getJsonStringWithURL(token, "http://g-aideappweb.azurewebsites.net/api/services/?userName="+email);
+        String stringJSON = getJsonStringWithURL(token, "http://g-aideappweb.azurewebsites.net/api/servicesUser/?userName="+email);
         return jsonToServices(stringJSON);
     }
 
@@ -67,5 +69,12 @@ public class ServiceDAO extends GenericDAO implements IServiceDAO
     {
         String stringJSON = serviceToJson(service);
         postJsonStringWithURL(token, stringJSON, "http://g-aideappweb.azurewebsites.net/api/services");
+    }
+
+    @Override
+    public void putService(String token, Service service) throws Exception
+    {
+        String stringJson = serviceToJson(service);
+        putJsonStringWithURL(token, stringJson, "http://g-aideappweb.azurewebsites.net/api/services/"+service.getId());
     }
 }

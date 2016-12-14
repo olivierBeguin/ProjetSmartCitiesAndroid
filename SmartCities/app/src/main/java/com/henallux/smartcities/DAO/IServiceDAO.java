@@ -15,4 +15,5 @@ public interface IServiceDAO
 {
     public ArrayList<Service> getServices(String token, String email) throws Exception;
     public void postServices(String token, Service service) throws Exception;
+    public void putService(String token, Service service) throws Exception;
 }

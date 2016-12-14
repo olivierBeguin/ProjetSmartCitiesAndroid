@@ -81,28 +81,38 @@ public class NeedServiceActivity extends Fragment {
         new SendService().execute(service);
     }
 
-    private class SendService extends AsyncTask<Service, Void, Void>
+    private class SendService extends AsyncTask<Service, Void, Boolean>
     {
-        private Exception exception;
+        private Exception exceptionToBeThrow;
 
         @Override
-        protected Void doInBackground(Service... params) {
+        protected Boolean doInBackground(Service... params) {
             try
             {
                 ServiceDAO serviceDAO = new ServiceDAO();
                 String token = userConnected.getToken(getActivity());
                 serviceDAO.postServices(token, params[0]);
+                return true;
             }
             catch(Exception e)
             {
-                Log.i("Test", e.getMessage());
+                exceptionToBeThrow = e;
+                return false;
             }
-            return null;
+
+        }
+
+        @Override
+        protected void onPostExecute(Boolean success)
+        {
+            if (!success)
+                Toast.makeText(getActivity(), exceptionToBeThrow.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 
     private class LoadCategory extends AsyncTask<String, Integer, ArrayList<CategoryService>>
     {
+        private Exception exceptionToBeThrow;
         @Override
         protected void onPreExecute()
         {
@@ -119,8 +129,7 @@ public class NeedServiceActivity extends Fragment {
             }
             catch (Exception e)
             {
-                Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_LONG).show();
-
+                exceptionToBeThrow = e;
             }
             return categoryServices;
         }
@@ -133,15 +142,19 @@ public class NeedServiceActivity extends Fragment {
 
         @Override
         protected void onPostExecute(ArrayList<CategoryService> categoryServices) {
-            Spinner spinner = (Spinner) getActivity().findViewById(R.id.spinnerNeedService);
-            ArrayList<String> category = new ArrayList<>();
-            category.add("Selectionnez une catégorie");
-            for (CategoryService cat : categoryServices)
+            if(categoryServices == null && exceptionToBeThrow != null)
+                Toast.makeText(getActivity(), exceptionToBeThrow.getMessage(), Toast.LENGTH_LONG).show();
+            else
             {
-                category.add(cat.getLabel());
+                Spinner spinner = (Spinner) getActivity().findViewById(R.id.spinnerNeedService);
+                ArrayList<String> category = new ArrayList<>();
+                category.add("Selectionnez une catégorie");
+                for (CategoryService cat : categoryServices) {
+                    category.add(cat.getLabel());
+                }
+                ArrayAdapter adapter = new ArrayAdapter(getActivity(), R.layout.support_simple_spinner_dropdown_item, category);
+                spinner.setAdapter(adapter);
             }
-            ArrayAdapter adapter = new ArrayAdapter(getActivity(), R.layout.support_simple_spinner_dropdown_item, category);
-            spinner.setAdapter(adapter);
         }
     }
 }

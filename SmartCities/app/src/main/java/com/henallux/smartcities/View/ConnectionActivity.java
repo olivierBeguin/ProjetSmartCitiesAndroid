@@ -95,7 +95,6 @@ public class ConnectionActivity extends AppCompatActivity
             progressBar.setVisibility(View.GONE);
             if (userApp != null && exceptionToBeThrow == null)
             {
-
                 userConnected.setUserConnected(ConnectionActivity.this, userApp);
                 Intent intent = new Intent(ConnectionActivity.this, ServicesActivity.class);
                 startActivity(intent);

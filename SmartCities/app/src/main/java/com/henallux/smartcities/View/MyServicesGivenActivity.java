@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.henallux.smartcities.DAO.DoServiceDAO;
 import com.henallux.smartcities.R;
@@ -26,7 +27,7 @@ public class MyServicesGivenActivity  extends Fragment {
     public static final String ARG_PAGE = "ARG_PAGE";
 
     private int mPage;
-    private ArrayList<DoService> doServices;
+    private ArrayList<DoService> doServices = null;
     private ListView listView;
     private UserConnected userConnected;
 
@@ -58,6 +59,7 @@ public class MyServicesGivenActivity  extends Fragment {
 
     private class LoadDoServices extends AsyncTask<String, Void, ArrayList<DoService>>
     {
+        private Exception exceptionToBeThrow = null;
         @Override
         protected ArrayList<DoService> doInBackground(String... params)
         {
@@ -69,8 +71,7 @@ public class MyServicesGivenActivity  extends Fragment {
                 String token = userConnected.getToken(getActivity());
                 doServices = doServiceDAO.getDoServiceOfUser(token, userApp.getEmail());
             } catch (Exception e) {
-                //Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_LONG).show();
-                Log.i("Test", e.getMessage());
+                exceptionToBeThrow = e;
             }
             return doServices;
         }
@@ -78,9 +79,14 @@ public class MyServicesGivenActivity  extends Fragment {
         @Override
         protected void onPostExecute(final ArrayList<DoService> doServices)
         {
-            listView = (ListView) getActivity().findViewById(R.id.listview_my_services_done);
-            DoServicesAdapter doServicesAdapter = new DoServicesAdapter(getActivity(), doServices);
-            listView.setAdapter(doServicesAdapter);
+            if(doServices == null && exceptionToBeThrow != null)
+                Toast.makeText(getActivity(), exceptionToBeThrow.getMessage(), Toast.LENGTH_LONG).show();
+            else
+            {
+                listView = (ListView) getActivity().findViewById(R.id.listview_my_services_done);
+                DoServicesAdapter doServicesAdapter = new DoServicesAdapter(getActivity(), doServices);
+                listView.setAdapter(doServicesAdapter);
+            }
         }
     }
 
