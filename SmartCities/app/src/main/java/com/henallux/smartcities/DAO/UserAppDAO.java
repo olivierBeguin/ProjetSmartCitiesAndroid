@@ -166,7 +166,6 @@ public class UserAppDAO extends GenericDAO implements IUserAppDAO
         jsonUser.accumulate("Country", userApp.getCountry());
         jsonUser.accumulate("Category", userApp.getCategory());
         jsonUser.accumulate("PhoneNumber", userApp.getPhoneNumber());
-
         return jsonUser.toString();
     }
 }

@@ -21,13 +21,6 @@ public class ProfilActivity extends LayoutActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profil);
         loadUser();
-        myCommentButton = (Button) findViewById(R.id.myCommentsButton);
-        myCommentButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goToComment();
-            }
-        });
         modifyButton = (Button) findViewById(R.id.modify_button);
         modifyButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,12 +35,6 @@ public class ProfilActivity extends LayoutActivity
                 goToMyActivityActivity();
             }
         });
-    }
-
-    private void goToComment()
-    {
-        Intent intent = new Intent(ProfilActivity.this, SeeCommentActivity.class);
-        startActivity(intent);
     }
 
     private void goToModifProfil()

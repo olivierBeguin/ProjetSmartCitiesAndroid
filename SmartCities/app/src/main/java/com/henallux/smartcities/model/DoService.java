@@ -1,13 +1,15 @@
 package com.henallux.smartcities.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by olivierbeguin on 22/11/16.
  */
 
-public class DoService
+public class DoService implements Serializable
 {
+    private Integer id;
     private Date dateService;
     private UserApp userDoService;
     private Service serviceDone;
@@ -21,6 +23,20 @@ public class DoService
         this.serviceDone = serviceDone;
         this.comment = comment;
         this.rating = rating;
+    }
+
+    public DoService(Integer id, Date dateService, UserApp userDoService, Service serviceDone, String comment, Double rating)
+    {
+        this.id = id;
+        this.dateService = dateService;
+        this.userDoService = userDoService;
+        this.serviceDone = serviceDone;
+        this.comment = comment;
+        this.rating = rating;
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public Date getDateService() { return dateService; }
@@ -39,6 +55,10 @@ public class DoService
 
     public Double getRating() {
         return rating;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public void setDateService(Date dateService) {

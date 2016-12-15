@@ -69,7 +69,7 @@ public class MyServicesReceivedActivity extends Fragment {
         btn_add_comment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //actionBtnAddComment();
+                actionBtnAddComment();
             }
         });
     }
@@ -116,7 +116,7 @@ public class MyServicesReceivedActivity extends Fragment {
             if (doServiceToAddComment != null)
             {
                 Intent intent = new Intent(getActivity(), CommentActivity.class);
-                //intent.putExtra("doService", (Serializable) doServiceToAddComment);
+                intent.putExtra("doService", (Serializable) doServiceToAddComment);
                 startActivity(intent);
             }
         } catch (RechercheServiceException e)

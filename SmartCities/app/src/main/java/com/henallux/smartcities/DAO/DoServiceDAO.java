@@ -25,10 +25,18 @@ public class DoServiceDAO extends GenericDAO implements IDoServiceDAO
         return jsonToDoServices(stringJSON);
     }
 
+    @Override
     public void postDoService(String token, DoService doService) throws Exception
     {
         String jsonString = doServiceToJson(doService);
         postJsonStringWithURL(token, jsonString, "http://g-aideappweb.azurewebsites.net/api/doServices");
+    }
+
+    @Override
+    public void putDoService(String token, DoService doService) throws Exception
+    {
+        String jsonString = doServiceCommentToJson(doService);
+        putJsonStringWithURL(token, jsonString, "http://g-aideappweb.azurewebsites.net/api/doServices/?id="+doService.getId());
     }
 
     private ArrayList<DoService> jsonToDoServices(String stringJSON) throws Exception
@@ -48,7 +56,7 @@ public class DoServiceDAO extends GenericDAO implements IDoServiceDAO
                 comment = null;
             else
                 comment = jsonDoService.getString("CommentDescription");
-            doServices.add(new DoService(sdf.parse(jsonDoService.getString("DateService")), userApp, service, comment, jsonDoService.getDouble("Rating")));
+            doServices.add(new DoService(jsonDoService.getInt("Id"), sdf.parse(jsonDoService.getString("DateService")), userApp, service, comment, jsonDoService.getDouble("Rating")));
         }
         return doServices;
     }
@@ -60,6 +68,18 @@ public class DoServiceDAO extends GenericDAO implements IDoServiceDAO
         jsonDoService.accumulate("DateService", sdf.format(doService.getDateService()));
         jsonDoService.accumulate("UserDoService", doService.getUserDoService().getEmail());
         jsonDoService.accumulate("ServiceDone", doService.getServiceDone().getId());
+        return jsonDoService.toString();
+    }
+
+    private String doServiceCommentToJson(DoService doService) throws Exception
+    {
+        JSONObject jsonDoService = new JSONObject();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        jsonDoService.accumulate("DateService", sdf.format(doService.getDateService()));
+        jsonDoService.accumulate("UserDoService", doService.getUserDoService().getEmail());
+        jsonDoService.accumulate("ServiceDone", doService.getServiceDone().getId());
+        jsonDoService.accumulate("CommentDescription", doService.getComment());
+        jsonDoService.accumulate("Rating", doService.getRating());
         return jsonDoService.toString();
     }
 

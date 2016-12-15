@@ -22,7 +22,6 @@
         <activity android:name=".view.RegisterActivity" />
         <activity android:name=".view.ServicesActivity" />
         <activity android:name=".view.ConnectionActivity" />
-        <activity android:name=".view.SeeCommentActivity" />
         <activity android:name=".view.ProfilActivity" />
         <activity android:name=".view.LayoutActivity" />
         <activity android:name=".view.ModifProfilActivity" />
