@@ -21,7 +21,7 @@ public class UserConnected
     public void setUserConnected(Activity activity, UserApp userApp)
     {
         SharedPreferences sharedPreferences = activity.getSharedPreferences("myPref", Context.MODE_PRIVATE);
-        SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("Firstname", userApp.getFirstName());
         editor.putString("Lastname", userApp.getLastName());
@@ -43,7 +43,7 @@ public class UserConnected
     public UserApp getUserConnected(Activity activity)
     {
         SharedPreferences sharedPreferences = activity.getSharedPreferences("myPref", Context.MODE_PRIVATE);
-        SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         try {
             userConnected = new UserApp(sharedPreferences.getString("Id", ""), sharedPreferences.getString("Firstname", ""), sharedPreferences.getString("Lastname", ""), sharedPreferences.getString("Email", ""), sharedPreferences.getString("PhoneNumber", ""), sharedPreferences.getString("Street", ""), sharedPreferences.getString("City", ""), sharedPreferences.getString("Country", ""), sharedPreferences.getString("Category", ""), sdf.parse(sharedPreferences.getString("DateInscription", "")), sharedPreferences.getString("PostalCode", ""), sharedPreferences.getString("Number", ""), sharedPreferences.getInt("SumServiceDone", 0), sharedPreferences.getInt("SumServiceGiven", 0));
         }

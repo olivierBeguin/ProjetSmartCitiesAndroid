@@ -62,4 +62,10 @@ public class DoServiceDAO extends GenericDAO implements IDoServiceDAO
         jsonDoService.accumulate("ServiceDone", doService.getServiceDone().getId());
         return jsonDoService.toString();
     }
+
+    @Override
+    public ArrayList<DoService> getDoServicesReceived(String token, String email) throws Exception {
+        String stringJSON = getJsonStringWithURL(token, "http://g-aideappweb.azurewebsites.net/api/doServicesReceivedUser/?email="+email);
+        return jsonToDoServices(stringJSON);
+    }
 }

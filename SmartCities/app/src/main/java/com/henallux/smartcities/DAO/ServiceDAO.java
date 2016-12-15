@@ -34,7 +34,7 @@ public class ServiceDAO extends GenericDAO implements IServiceDAO
         {
             JSONObject jsonService = jsonArrayService.getJSONObject(i);
 
-            SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             services.add(new Service(jsonService.getInt("Id"), jsonService.getString("Label"), jsonService.getString("DescriptionService"), sdf.parse(jsonService.getString("DatePublicationService"))));
             JSONObject jsonCategory = jsonService.getJSONObject("Category");
             services.get(i).setCategory(new CategoryService(jsonCategory.getInt("Id"), jsonCategory.getString("Label")));
@@ -77,4 +77,6 @@ public class ServiceDAO extends GenericDAO implements IServiceDAO
         String stringJson = serviceToJson(service);
         putJsonStringWithURL(token, stringJson, "http://g-aideappweb.azurewebsites.net/api/services/"+service.getId());
     }
+
+
 }

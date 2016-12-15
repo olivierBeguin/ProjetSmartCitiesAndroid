@@ -4,11 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.henallux.smartcities.R;
 import com.henallux.smartcities.view.MyServicesDoneActivity;
-import com.henallux.smartcities.view.MyServicesGivenActivity;
-
-import java.util.List;
+import com.henallux.smartcities.view.MyServicesReceivedActivity;
 
 /**
  * Created by olivierbeguin on 15/11/16.
@@ -16,7 +13,7 @@ import java.util.List;
 
 public class PagerAdapterMyActivities extends FragmentPagerAdapter {
     private final int PAGE_COUNT = 2;
-    private String tabTitles[] = new String[] {"Service effectué", "Service reçu"};
+    private String tabTitles[] = new String[] {"Service reçu", "Service effectué"};
 
     public PagerAdapterMyActivities(FragmentManager fm) {
         super(fm);
@@ -31,7 +28,7 @@ public class PagerAdapterMyActivities extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         if (position == 1)
             return MyServicesDoneActivity.newInstance(position);
-        return MyServicesGivenActivity.newInstance(position);
+        return MyServicesReceivedActivity.newInstance(position);
     }
 
     @Override

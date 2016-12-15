@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SmartCities</string>
+    <string name="app_name">G-aide</string>
     <string name="textWelcome">Bienvenue sur</string>
     <string name="connectionButton">Se connecter</string>
     <string name="registerButton">S\'inscrire</string>

@@ -17,16 +17,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.henallux.smartcities.DAO.CategoryServiceDAO;
+import com.henallux.smartcities.DAO.DoServiceDAO;
 import com.henallux.smartcities.DAO.ServiceDAO;
 import com.henallux.smartcities.R;
 import com.henallux.smartcities.exception.RechercheServiceException;
 import com.henallux.smartcities.model.CategoryService;
+import com.henallux.smartcities.model.DoService;
 import com.henallux.smartcities.model.Service;
 import com.henallux.smartcities.model.ServicesAdapter;
+import com.henallux.smartcities.model.UserApp;
 import com.henallux.smartcities.model.UserConnected;
 import com.henallux.smartcities.service.Business;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class SearchServiceActivity extends Fragment {
     public static final String ARG_PAGE = "ARG_PAGE";
@@ -155,6 +159,7 @@ public class SearchServiceActivity extends Fragment {
 
     private class LoadServices extends AsyncTask<String, Void, ArrayList<Service>>
     {
+        private Exception exceptionToBeThrow;
         @Override
         protected ArrayList<Service> doInBackground(String... params)
         {
@@ -166,34 +171,37 @@ public class SearchServiceActivity extends Fragment {
             }
             catch (Exception e)
             {
-                //Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_LONG).show();
-                Log.i("Test", e.getMessage());
+                exceptionToBeThrow = e;
+                //Log.i("Test", e.getMessage());
             }
             return services;
         }
 
         @Override
         protected void onPostExecute(final ArrayList<Service> services) {
-            spinner = (Spinner) getActivity().findViewById(R.id.spinnerSearchService);
-            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    servicesCat = Business.triServiceCat(services, (String) spinner.getSelectedItem());
-                    listView = (ListView) getActivity().findViewById(R.id.listServices);
-                    ServicesAdapter servicesAdapter = new ServicesAdapter(getActivity(), servicesCat);
-                    listView.setAdapter(servicesAdapter);
-                }
+            if (services == null && exceptionToBeThrow != null)
+                Toast.makeText(getActivity(), exceptionToBeThrow.getMessage(), Toast.LENGTH_LONG).show();
+            else {
+                spinner = (Spinner) getActivity().findViewById(R.id.spinnerSearchService);
+                spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        servicesCat = Business.triServiceCat(services, (String) spinner.getSelectedItem());
+                        listView = (ListView) getActivity().findViewById(R.id.listServices);
+                        ServicesAdapter servicesAdapter = new ServicesAdapter(getActivity(), servicesCat);
+                        listView.setAdapter(servicesAdapter);
+                    }
 
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
 
-                }
-            });
-            servicesCat = Business.triServiceCat(services, (String) spinner.getSelectedItem());
-            listView = (ListView) getActivity().findViewById(R.id.listServices);
-            ServicesAdapter servicesAdapter = new ServicesAdapter(getActivity(), servicesCat);
-            listView.setAdapter(servicesAdapter);
-
+                    }
+                });
+                servicesCat = Business.triServiceCat(services, (String) spinner.getSelectedItem());
+                listView = (ListView) getActivity().findViewById(R.id.listServices);
+                ServicesAdapter servicesAdapter = new ServicesAdapter(getActivity(), servicesCat);
+                listView.setAdapter(servicesAdapter);
+            }
         }
     }
 
@@ -205,8 +213,12 @@ public class SearchServiceActivity extends Fragment {
         {
             try {
                 ServiceDAO serviceDAO = new ServiceDAO();
+                DoServiceDAO doServiceDAO = new DoServiceDAO();
                 String token = userConnected.getToken(getActivity());
+                UserApp userDoService = userConnected.getUserConnected(getActivity());
                 serviceDAO.putService(token, params[0]);
+                DoService doService = new DoService(new Date(), userDoService, params[0], null, null);
+                doServiceDAO.postDoService(token, doService);
                 return true;
             }
             catch (Exception e)

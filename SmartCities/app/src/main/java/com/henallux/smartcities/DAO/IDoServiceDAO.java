@@ -1,6 +1,7 @@
 package com.henallux.smartcities.DAO;
 
 import com.henallux.smartcities.model.DoService;
+import com.henallux.smartcities.model.Service;
 
 import java.util.ArrayList;
 
@@ -12,4 +13,5 @@ public interface IDoServiceDAO
 {
     public ArrayList<DoService> getDoServiceOfUser(String token, String username) throws Exception;
     public void postDoService(String token, DoService doService) throws Exception;
+    public ArrayList<DoService> getDoServicesReceived(String token, String email) throws Exception;
 }

@@ -1,11 +1,16 @@
 package com.henallux.smartcities.view;
 
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.henallux.smartcities.DAO.UserAppDAO;
 import com.henallux.smartcities.R;
 import com.henallux.smartcities.exception.FormException;
 import com.henallux.smartcities.model.UserApp;
@@ -14,7 +19,8 @@ import com.henallux.smartcities.service.Business;
 
 public class ModifProfilActivity extends AppCompatActivity
 {
-    UserConnected userConnected;
+    private UserConnected userConnected;
+    private Button btnSave;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -23,7 +29,13 @@ public class ModifProfilActivity extends AppCompatActivity
         setContentView(R.layout.activity_modif_profil);
         userConnected = new UserConnected();
         setModifyContent();
-        //getModifyContent();
+        btnSave = (Button) findViewById(R.id.save_button);
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getModifyContent();
+            }
+        });
     }
 
     private void setModifyContent()
@@ -51,22 +63,52 @@ public class ModifProfilActivity extends AppCompatActivity
 
     private void getModifyContent()
     {
-        try
+
+
+        //Recréer un objet user.
+        UserApp userModif = new UserApp(String.valueOf(((EditText) findViewById(R.id.firstnameTextEditTextModifProfil)).getText()), String.valueOf(((EditText) findViewById(R.id.lastnameEditTextModifProfil)).getText()), null ,String.valueOf(((EditText) findViewById(R.id.mailEditTextModifProfil)).getText()), String.valueOf(((EditText) findViewById(R.id.phoneEditTextModifProfil)).getText()), String.valueOf(((EditText) findViewById(R.id.streetEditTextModifProfil)).getText()), String.valueOf(((EditText) findViewById(R.id.cityEditTextModifProfil)).getText()), String.valueOf(((EditText) findViewById(R.id.countryTextEditModifProfil)).getText()), null, null, String.valueOf(((EditText) findViewById(R.id.postalCodeEditTextModifProfil)).getText()), String.valueOf(((EditText) findViewById(R.id.numEditTextModifProfil)).getText()));
+        //Check s'ils sont !=
+        UserApp userApp = userConnected.getUserConnected(ModifProfilActivity.this);
+        boolean isChanged = Business.compareTwoUserAndAddDifference(userApp, userModif);
+        //Verifier les données
+        if (isChanged)
         {
-            //Recréer un objet user.
-            UserApp userModif = new UserApp(String.valueOf(((EditText) findViewById(R.id.firstnameTextEditTextModifProfil)).getText()), String.valueOf(((EditText) findViewById(R.id.lastnameEditTextModifProfil)).getText()), null ,String.valueOf(((EditText) findViewById(R.id.mailEditTextModifProfil)).getText()), String.valueOf(((EditText) findViewById(R.id.phoneEditTextModifProfil)).getText()), String.valueOf(((EditText) findViewById(R.id.streetEditTextModifProfil)).getText()), String.valueOf(((EditText) findViewById(R.id.cityEditTextModifProfil)).getText()), String.valueOf(((EditText) findViewById(R.id.countryTextEditModifProfil)).getText()), null, null, String.valueOf(((EditText) findViewById(R.id.postalCodeEditTextModifProfil)).getText()), String.valueOf(((EditText) findViewById(R.id.numEditTextModifProfil)).getText()));
-            //Check s'ils sont !=
-            UserApp userApp = userConnected.getUserConnected(ModifProfilActivity.this);
-            boolean isChanged = Business.compareTwoUserAndAddDifference(userApp, userModif);
-            //Verifier les données
-            if (isChanged)
-            {
-                Business.verifyEntry(userApp, userApp.getPassword(), ModifProfilActivity.this);
-                //PUTUSER
+//                Business.verifyEntry(userApp, userApp.getPassword(), ModifProfilActivity.this);
+            new ModifProfil().execute(userApp);
+        }
+
+    }
+
+    private class ModifProfil extends AsyncTask<UserApp, Void, UserApp>
+    {
+        private Exception exceptionToBeThrow = null;
+        @Override
+        protected UserApp doInBackground(UserApp... params)
+        {
+            UserApp userApp = null;
+            try {
+                UserAppDAO userAppDAO = new UserAppDAO();
+                String token = userConnected.getToken(ModifProfilActivity.this);
+                userAppDAO.updateUser(token, params[0]);
+                userApp = params[0];
             }
-        } catch (FormException e)
-        {
-            Toast.makeText(ModifProfilActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+            catch (Exception e)
+            {
+                exceptionToBeThrow = e;
+            }
+            return userApp;
+        }
+
+        @Override
+        protected void onPostExecute(UserApp userApp) {
+            if (userApp == null && exceptionToBeThrow != null)
+                Toast.makeText(ModifProfilActivity.this, exceptionToBeThrow.getMessage(), Toast.LENGTH_LONG).show();
+            else
+            {
+                userConnected.setUserConnected(ModifProfilActivity.this, userApp);
+                Intent intent = new Intent(ModifProfilActivity.this, ProfilActivity.class);
+                startActivity(intent);
+            }
         }
     }
 

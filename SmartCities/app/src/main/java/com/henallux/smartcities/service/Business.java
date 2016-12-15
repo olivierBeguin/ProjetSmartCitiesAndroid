@@ -9,8 +9,11 @@ import com.henallux.smartcities.R;
 import com.henallux.smartcities.exception.FormException;
 import com.henallux.smartcities.exception.RechercheServiceException;
 import com.henallux.smartcities.model.CategoryService;
+import com.henallux.smartcities.model.DoService;
+import com.henallux.smartcities.model.DoServicesAdapter;
 import com.henallux.smartcities.model.Service;
 import com.henallux.smartcities.model.ServicesAdapter;
+import com.henallux.smartcities.model.ServicesReceivedAdapter;
 import com.henallux.smartcities.model.UserApp;
 
 import java.util.ArrayList;
@@ -68,8 +71,22 @@ public class Business
 
         for (Service service : services)
         {
-            if(service.getLabelService() == label)
+            if(service.getLabelService().equals(label))
                 return service;
+        }
+        throw new RechercheServiceException("Contacter Louis");
+    }
+
+    public static DoService rechercheDoService(ListView listView, ArrayList<DoService> doServices) throws RechercheServiceException
+    {
+        int pos = ((ServicesReceivedAdapter)listView.getAdapter()).getPositionChecked();
+        String label;
+        label = String.valueOf(((TextView) listView.getChildAt(pos).findViewById(R.id.label_list)).getText());
+
+        for (DoService doService : doServices)
+        {
+            if(doService.getServiceDone().getLabelService().equals(label))
+                return doService;
         }
         throw new RechercheServiceException("Contacter Louis");
     }

@@ -124,21 +124,7 @@ public class UserAppDAO extends GenericDAO implements IUserAppDAO
         OutputStreamWriter writer = new OutputStreamWriter(out);
         urlConnection.connect();
 
-        JSONObject jsonUser = new JSONObject();
-        jsonUser.accumulate("Password", userApp.getPassword());
-        jsonUser.accumulate("ConfirmPassword", userApp.getPassword());
-        jsonUser.accumulate("Email", userApp.getEmail());
-        jsonUser.accumulate("FirstName", userApp.getFirstName());
-        jsonUser.accumulate("LastName", userApp.getLastName());
-        jsonUser.accumulate("Street", userApp.getStreet());
-        jsonUser.accumulate("Number", userApp.getNumber());
-        jsonUser.accumulate("PostalCode", userApp.getPostalCode());
-        jsonUser.accumulate("City", userApp.getCity());
-        jsonUser.accumulate("Country", userApp.getCountry());
-        jsonUser.accumulate("Category", userApp.getCategory());
-        jsonUser.accumulate("PhoneNumber", userApp.getPhoneNumber());
-
-        String jsonString = jsonUser.toString();
+        String jsonString = userAppToJson(userApp);
 
         writer.write(jsonString);
         writer.flush();
@@ -159,8 +145,28 @@ public class UserAppDAO extends GenericDAO implements IUserAppDAO
     }
 
     @Override
-    public void updateUser(UserApp userApp)
+    public void updateUser(String token, UserApp userApp) throws Exception
     {
+        String jsonUser = userAppToJson(userApp);
+        putJsonStringWithURL(token, jsonUser, "http://g-aideappweb.azurewebsites.net/api/Users/?email="+userApp.getEmail());
+    }
 
+    private String userAppToJson(UserApp userApp) throws Exception
+    {
+        JSONObject jsonUser = new JSONObject();
+        jsonUser.accumulate("Password", userApp.getPassword());
+        jsonUser.accumulate("ConfirmPassword", userApp.getPassword());
+        jsonUser.accumulate("Email", userApp.getEmail());
+        jsonUser.accumulate("FirstName", userApp.getFirstName());
+        jsonUser.accumulate("LastName", userApp.getLastName());
+        jsonUser.accumulate("Street", userApp.getStreet());
+        jsonUser.accumulate("Number", userApp.getNumber());
+        jsonUser.accumulate("PostalCode", userApp.getPostalCode());
+        jsonUser.accumulate("City", userApp.getCity());
+        jsonUser.accumulate("Country", userApp.getCountry());
+        jsonUser.accumulate("Category", userApp.getCategory());
+        jsonUser.accumulate("PhoneNumber", userApp.getPhoneNumber());
+
+        return jsonUser.toString();
     }
 }
