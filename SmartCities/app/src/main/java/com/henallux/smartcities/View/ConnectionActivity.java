@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
 import com.henallux.smartcities.DAO.UserAppDAO;
 import com.henallux.smartcities.R;
 import com.henallux.smartcities.model.UserApp;
@@ -19,7 +18,6 @@ import com.henallux.smartcities.model.UserConnected;
 public class ConnectionActivity extends AppCompatActivity
 {
 
-    private Button connectionButton;
     private ProgressBar progressBar;
     private UserConnected userConnected;
     @Override
@@ -27,7 +25,7 @@ public class ConnectionActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_connection);
-        connectionButton = (Button) findViewById(R.id.connectionButtonConnection);
+        Button connectionButton = (Button) findViewById(R.id.connectionButtonConnection);
         connectionButton.setOnClickListener(new View.OnClickListener()
                 {
                     @Override

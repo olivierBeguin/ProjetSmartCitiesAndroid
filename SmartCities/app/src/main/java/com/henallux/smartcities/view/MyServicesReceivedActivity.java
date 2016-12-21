@@ -13,12 +13,9 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.henallux.smartcities.DAO.DoServiceDAO;
-import com.henallux.smartcities.DAO.ServiceDAO;
 import com.henallux.smartcities.R;
 import com.henallux.smartcities.exception.RechercheServiceException;
 import com.henallux.smartcities.model.DoService;
-import com.henallux.smartcities.model.Service;
-import com.henallux.smartcities.model.ServicesAdapter;
 import com.henallux.smartcities.model.ServicesReceivedAdapter;
 import com.henallux.smartcities.model.UserApp;
 import com.henallux.smartcities.model.UserConnected;
@@ -112,13 +109,17 @@ public class MyServicesReceivedActivity extends Fragment {
     {
         try
         {
-            DoService doServiceToAddComment = Business.rechercheDoService(listView, doServicesReceived);
-            if (doServiceToAddComment != null)
+            if(!doServicesReceived.isEmpty())
             {
-                Intent intent = new Intent(getActivity(), CommentActivity.class);
-                intent.putExtra("doService", (Serializable) doServiceToAddComment);
-                startActivity(intent);
+                DoService doServiceToAddComment = Business.rechercheDoService(listView, doServicesReceived);
+                if (doServiceToAddComment != null) {
+                    Intent intent = new Intent(getActivity(), CommentActivity.class);
+                    intent.putExtra("doService", doServiceToAddComment);
+                    startActivity(intent);
+                }
             }
+            else
+                throw new RechercheServiceException("Liste vide");
         } catch (RechercheServiceException e)
         {
             Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_LONG).show();

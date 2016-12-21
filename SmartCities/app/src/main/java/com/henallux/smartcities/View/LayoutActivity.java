@@ -5,8 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import com.henallux.smartcities.R;
+import com.henallux.smartcities.model.UserConnected;
 
 public class LayoutActivity extends AppCompatActivity
 {
@@ -33,6 +33,9 @@ public class LayoutActivity extends AppCompatActivity
             case R.id.profil:
                 goToProfilActivity();
                 return true;
+            case R.id.disconnect:
+                disconnect();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -47,6 +50,15 @@ public class LayoutActivity extends AppCompatActivity
     private void goToServicesActivity()
     {
         Intent intent = new Intent(LayoutActivity.this, ServicesActivity.class);
+        startActivity(intent);
+    }
+
+    private void disconnect()
+    {
+        Intent intent = new Intent(LayoutActivity.this, MainActivity.class);
+        UserConnected userConnected = new UserConnected();
+        userConnected.resetToken(LayoutActivity.this);
+        userConnected.resetUserConnected(LayoutActivity.this);
         startActivity(intent);
     }
 }

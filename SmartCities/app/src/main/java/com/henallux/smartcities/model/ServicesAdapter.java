@@ -1,7 +1,6 @@
 package com.henallux.smartcities.model;
 
 import android.content.Context;
-import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,13 +13,10 @@ import com.henallux.smartcities.R;
 
 import java.util.ArrayList;
 
-/**
- * Created by olivierbeguin on 6/12/16.
- */
 
 public class ServicesAdapter extends ArrayAdapter
 {
-    private int positionChecked;
+    private int positionChecked = -1;
     private CheckBox checkBox;
     public ServicesAdapter(Context context, ArrayList<Service> services)
     {
@@ -50,7 +46,8 @@ public class ServicesAdapter extends ArrayAdapter
         return convertView;
     }
 
-    public int getPositionChecked() {
+    public int getPositionChecked()
+    {
         return positionChecked;
     }
 }

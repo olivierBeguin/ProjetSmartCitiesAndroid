@@ -1,16 +1,16 @@
 package com.henallux.smartcities.view;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -18,6 +18,7 @@ import com.henallux.smartcities.DAO.UserAppDAO;
 import com.henallux.smartcities.R;
 import com.henallux.smartcities.exception.FormException;
 import com.henallux.smartcities.model.UserApp;
+import com.henallux.smartcities.model.UserConnected;
 import com.henallux.smartcities.service.Business;
 
 import java.util.Date;
@@ -25,22 +26,25 @@ import java.util.Date;
 public class RegisterActivity extends AppCompatActivity
 {
 
-    private Button registerButton;
-    private ProgressDialog progressDialog;
+    private ProgressBar progressBar;
+    private UserConnected userConnected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        registerButton = (Button) findViewById(R.id.registerButtonRegister);
+        Button registerButton = (Button) findViewById(R.id.registerButtonRegister);
         registerButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {registerUser();}
         });
-
+        userConnected = new UserConnected();
+        progressBar = (ProgressBar) findViewById(R.id.progressBar_register);
+        progressBar.getIndeterminateDrawable().setColorFilter(0xFF740024, PorterDuff.Mode.MULTIPLY);
+        progressBar.setVisibility(View.GONE);
         Spinner spinner = (Spinner) findViewById(R.id.spinnerCategory);
         ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(this, R.array.category_array, R.layout.support_simple_spinner_dropdown_item);
         arrayAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
@@ -56,6 +60,7 @@ public class RegisterActivity extends AppCompatActivity
 
                     }
                 });
+
 
     }
 
@@ -80,6 +85,7 @@ public class RegisterActivity extends AppCompatActivity
             //Log.i("Test", "lastname : " + lastname + "\n firstname :  " + firstname + "\n password :  " + password + "\n confirmPassword : " + confirmPassword + "\n mailAdress : " + mailAdress + "\n phoneNumber : " + phoneNumber + "\n street :  " + street + "\n city : " + city + "\n country : " + country + "\n postalCode : " + postalCode + "\n houseNumber :  " + houseNumber);
             Business.verifyEntry(user, confirmPassword, this);
             new SetUserApp().execute(user);
+            new LoadUserApp().execute(mailAdress, password);
 
         }
         catch(FormException e)
@@ -94,21 +100,17 @@ public class RegisterActivity extends AppCompatActivity
         startActivity(intent);
     }
 
-    private class SetUserApp extends AsyncTask<UserApp, Void, Void>
+    private class SetUserApp extends AsyncTask<UserApp, Void, UserApp>
     {
+        Exception exceptionToBeThrow;
         @Override
         protected void onPreExecute()
         {
             super.onPreExecute();
-            progressDialog = new ProgressDialog(RegisterActivity.this);
-            progressDialog.setCancelable(true);
-            progressDialog.setMessage(getString(R.string.loading));
-            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-            progressDialog.setProgress(0);
-            progressDialog.show();
+            progressBar.setVisibility(View.VISIBLE);
         }
         @Override
-        protected Void doInBackground(UserApp... params)
+        protected UserApp doInBackground(UserApp... params)
         {
 
 
@@ -120,16 +122,65 @@ public class RegisterActivity extends AppCompatActivity
             }
             catch (Exception e)
             {
-                Log.i("Test", e.getMessage());
+                exceptionToBeThrow = e;
             }
-            return null;
+            return params[0];
         }
 
         @Override
-        protected void onPostExecute(Void test) {
-            //Log.i("Test", "Token : "+token);
-            progressDialog.dismiss();
-            goToServicesActivity();
+        protected void onPostExecute(UserApp userApp) {
+            UserConnected userConnected = new UserConnected();
+            userConnected.setUserConnected(RegisterActivity.this, userApp);
+        }
+    }
+
+
+    private class LoadUserApp extends AsyncTask<String, Integer, UserApp>
+    {
+        private Exception exceptionToBeThrow;
+        @Override
+        protected void onPreExecute()
+        {
+            super.onPreExecute();
+        }
+        @Override
+        protected UserApp doInBackground(String... params)
+        {
+            UserApp userApp = new UserApp();
+            String token;
+            try
+            {
+                UserAppDAO userAppDAO = new UserAppDAO();
+                token = userAppDAO.getUserWithMailandPw(params[0], params[1]);
+                userConnected.setToken(RegisterActivity.this, token);
+                userApp = userAppDAO.getUser(token, params[0]);
+                return userApp;
+            }
+            catch (Exception e)
+            {
+                exceptionToBeThrow = e;
+                return userApp;
+            }
+
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values)
+        {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onPostExecute(UserApp userApp) {
+            progressBar.setVisibility(View.GONE);
+            if (userApp != null && exceptionToBeThrow == null)
+            {
+                goToServicesActivity();
+            }
+            else
+            {
+                Toast.makeText(RegisterActivity.this, exceptionToBeThrow.getMessage(), Toast.LENGTH_LONG).show();
+            }
         }
     }
 

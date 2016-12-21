@@ -33,8 +33,6 @@ import java.util.Date;
 public class SearchServiceActivity extends Fragment {
     public static final String ARG_PAGE = "ARG_PAGE";
 
-    private int mPage;
-    private Button btn_refresh, btn_accept_service;
     private Spinner spinner;
     private ListView listView;
 
@@ -53,7 +51,7 @@ public class SearchServiceActivity extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPage = getArguments().getInt(ARG_PAGE);
+        int mPage = getArguments().getInt(ARG_PAGE);
         userConnected = new UserConnected();
         String token = userConnected.getToken(getActivity());
         String email = userConnected.getUserConnected(getActivity()).getEmail();
@@ -69,19 +67,18 @@ public class SearchServiceActivity extends Fragment {
     // Set the associated text for the title
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_searchservice, container, false);
-        return view;
+        return inflater.inflate(R.layout.activity_searchservice, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        btn_refresh = (Button) getActivity().findViewById(R.id.btn_refresh);
+        Button btn_refresh = (Button) getActivity().findViewById(R.id.btn_refresh);
         btn_refresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {actionBtnRefresh();}
         });
-        btn_accept_service = (Button) getActivity().findViewById(R.id.btn_accept_service);
+        Button btn_accept_service = (Button) getActivity().findViewById(R.id.btn_accept_service);
         btn_accept_service.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,9 +99,11 @@ public class SearchServiceActivity extends Fragment {
     {
         try
         {
-            Service service = Business.rechercheService(listView, services);
-            service.setServiceDone(true);
-            new AcceptService().execute(service);
+            if(!services.isEmpty()) {
+                Service service = Business.rechercheService(listView, services);
+                service.setServiceDone(true);
+                new AcceptService().execute(service);
+            }
         }
         catch (RechercheServiceException e)
         {

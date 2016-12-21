@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
 import com.henallux.smartcities.R;
 import com.henallux.smartcities.model.UserApp;
 import com.henallux.smartcities.model.UserConnected;
@@ -13,22 +12,20 @@ import com.henallux.smartcities.model.UserConnected;
 public class ProfilActivity extends LayoutActivity
 {
 
-    private Button myCommentButton, modifyButton, myActivitiesButton;
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profil);
         loadUser();
-        modifyButton = (Button) findViewById(R.id.modify_button);
+        Button modifyButton = (Button) findViewById(R.id.modify_button);
         modifyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 goToModifProfil();
             }
         });
-        myActivitiesButton = (Button) findViewById(R.id.myActivitiesButton);
+        Button myActivitiesButton = (Button) findViewById(R.id.myActivitiesButton);
         myActivitiesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

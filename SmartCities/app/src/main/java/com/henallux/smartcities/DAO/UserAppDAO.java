@@ -1,35 +1,19 @@
 package com.henallux.smartcities.DAO;
 
 import android.util.Log;
-
-import com.google.gson.Gson;
 import com.henallux.smartcities.exception.ConnectionException;
 import com.henallux.smartcities.model.UserApp;
-
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.io.PrintStream;
-import java.io.PrintWriter;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
 import java.util.Date;
-import java.util.zip.InflaterOutputStream;
 
-/**
- * Created by olivierbeguin on 22/11/16.
- */
 
 public class UserAppDAO extends GenericDAO implements IUserAppDAO
 {
@@ -82,26 +66,31 @@ public class UserAppDAO extends GenericDAO implements IUserAppDAO
         }
     }
 
-    public UserApp getUser(String token, String email) throws Exception
+    public UserApp getUser(String token, String email) throws ConnectionException
     {
         String stringJSON = getJsonStringWithURL(token, "http://g-aideappweb.azurewebsites.net/api/users/?username="+email);
         return jsonToUserApp(stringJSON);
     }
 
-    private UserApp jsonToUserApp(String stringJSON) throws Exception
+    private UserApp jsonToUserApp(String stringJSON) throws ConnectionException
     {
-        UserApp userApp = null;
-        JSONObject jsonUserApp = new JSONObject(stringJSON);
-        userApp = new UserApp(jsonUserApp.getString("Id"), jsonUserApp.getString("FirstName"), jsonUserApp.getString("LastName"), jsonUserApp.getString("Email"), jsonUserApp.getString("PhoneNumber"), jsonUserApp.getString("Street"), jsonUserApp.getString("City"), jsonUserApp.getString("Country"), jsonUserApp.getString("Category"), new Date(), jsonUserApp.getString("PostalCode"), jsonUserApp.getString("Number"), jsonUserApp.getInt("NumGetService"), jsonUserApp.getInt("NumServiceGive"));
-        return userApp;
+        try {
+            UserApp userApp = null;
+            JSONObject jsonUserApp = new JSONObject(stringJSON);
+            userApp = new UserApp(jsonUserApp.getString("Id"), jsonUserApp.getString("FirstName"), jsonUserApp.getString("LastName"), jsonUserApp.getString("Email"), jsonUserApp.getString("PhoneNumber"), jsonUserApp.getString("Street"), jsonUserApp.getString("City"), jsonUserApp.getString("Country"), jsonUserApp.getString("Category"), new Date(), jsonUserApp.getString("PostalCode"), jsonUserApp.getString("Number"), jsonUserApp.getInt("NumGetService"), jsonUserApp.getInt("NumServiceGive"));
+            return userApp;
+        }
+        catch (Exception e)
+        {
+            throw new ConnectionException(false);
+        }
     }
 
-    private String jsonToToken(String stringJSON) throws Exception
+    private String jsonToToken(String stringJSON) throws ConnectionException
     {
         try
         {
-            String token = new JSONObject(stringJSON).getString("access_token");
-            return token;
+            return new JSONObject(stringJSON).getString("access_token");
         }
         catch (JSONException e)
         {
@@ -112,60 +101,69 @@ public class UserAppDAO extends GenericDAO implements IUserAppDAO
 
 
     @Override
-    public void registerUser(UserApp userApp) throws Exception
+    public void registerUser(UserApp userApp) throws ConnectionException
     {
-        URL url = new URL("http://g-aideappweb.azurewebsites.net/api/Account/Register");
-        HttpURLConnection urlConnection = (HttpURLConnection)url.openConnection();
-        urlConnection.setRequestMethod("POST");
-        urlConnection.setRequestProperty("Content-type", "application/json");
-        urlConnection.setDoOutput(true);
+        try {
+            URL url = new URL("http://g-aideappweb.azurewebsites.net/api/Account/Register");
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setRequestMethod("POST");
+            urlConnection.setRequestProperty("Content-type", "application/json");
+            urlConnection.setDoOutput(true);
 
-        OutputStream out = urlConnection.getOutputStream();
-        OutputStreamWriter writer = new OutputStreamWriter(out);
-        urlConnection.connect();
+            OutputStream out = urlConnection.getOutputStream();
+            OutputStreamWriter writer = new OutputStreamWriter(out);
+            urlConnection.connect();
 
-        String jsonString = userAppToJson(userApp);
+            String jsonString = userAppToJson(userApp);
 
-        writer.write(jsonString);
-        writer.flush();
+            writer.write(jsonString);
+            writer.flush();
 
-        if (200 <= urlConnection.getResponseCode() && urlConnection.getResponseCode() <= 299)
-        {
-            Log.i("Test", "Crée");
+            if (200 <= urlConnection.getResponseCode() && urlConnection.getResponseCode() <= 299) {
+                Log.i("Test", "Crée");
+            } else {
+                throw new ConnectionException(false);
+
+            }
+
+            writer.close();
+            out.close();
+            urlConnection.disconnect();
         }
-        else
+        catch (Exception e)
         {
-            Log.i("Test", urlConnection.getResponseMessage());
-
+            throw new ConnectionException(false);
         }
-
-        writer.close();
-        out.close();
-        urlConnection.disconnect();
     }
 
     @Override
-    public void updateUser(String token, UserApp userApp) throws Exception
+    public void updateUser(String token, UserApp userApp) throws ConnectionException
     {
         String jsonUser = userAppToJson(userApp);
         putJsonStringWithURL(token, jsonUser, "http://g-aideappweb.azurewebsites.net/api/Users/?email="+userApp.getEmail());
     }
 
-    private String userAppToJson(UserApp userApp) throws Exception
+    private String userAppToJson(UserApp userApp) throws ConnectionException
     {
-        JSONObject jsonUser = new JSONObject();
-        jsonUser.accumulate("Password", userApp.getPassword());
-        jsonUser.accumulate("ConfirmPassword", userApp.getPassword());
-        jsonUser.accumulate("Email", userApp.getEmail());
-        jsonUser.accumulate("FirstName", userApp.getFirstName());
-        jsonUser.accumulate("LastName", userApp.getLastName());
-        jsonUser.accumulate("Street", userApp.getStreet());
-        jsonUser.accumulate("Number", userApp.getNumber());
-        jsonUser.accumulate("PostalCode", userApp.getPostalCode());
-        jsonUser.accumulate("City", userApp.getCity());
-        jsonUser.accumulate("Country", userApp.getCountry());
-        jsonUser.accumulate("Category", userApp.getCategory());
-        jsonUser.accumulate("PhoneNumber", userApp.getPhoneNumber());
-        return jsonUser.toString();
+        try {
+            JSONObject jsonUser = new JSONObject();
+            jsonUser.accumulate("Password", userApp.getPassword());
+            jsonUser.accumulate("ConfirmPassword", userApp.getPassword());
+            jsonUser.accumulate("Email", userApp.getEmail());
+            jsonUser.accumulate("FirstName", userApp.getFirstName());
+            jsonUser.accumulate("LastName", userApp.getLastName());
+            jsonUser.accumulate("Street", userApp.getStreet());
+            jsonUser.accumulate("Number", userApp.getNumber());
+            jsonUser.accumulate("PostalCode", userApp.getPostalCode());
+            jsonUser.accumulate("City", userApp.getCity());
+            jsonUser.accumulate("Country", userApp.getCountry());
+            jsonUser.accumulate("Category", userApp.getCategory());
+            jsonUser.accumulate("PhoneNumber", userApp.getPhoneNumber());
+            return jsonUser.toString();
+        }
+        catch (Exception e)
+        {
+            throw new ConnectionException(false);
+        }
     }
 }

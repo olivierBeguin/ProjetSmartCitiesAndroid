@@ -19,5 +19,12 @@
         app:showAsAction="ifRoom"
         />
 
+    <item
+        android:id="@+id/disconnect"
+        android:icon="@drawable/ic_disconnect"
+        android:title="@string/disconnect"
+        app:showAsAction="ifRoom"
+        />
+
 
 </menu>

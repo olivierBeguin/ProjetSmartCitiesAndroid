@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">G-aide</string>
+    <string name="app_name">G-Aide</string>
     <string name="textWelcome">Bienvenue sur</string>
     <string name="connectionButton">Se connecter</string>
     <string name="registerButton">S\'inscrire</string>
@@ -44,6 +44,8 @@
     <string name="see_comment">Voir le commentaire</string>
     <string name="btn_ask_service">Demander le service</string>
     <string name="do_service">Effectuer ce service</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="no_comment">Il n\'y a pas de commentaire</string>
     <string-array name="category_array">
         <item>Jeune</item>
         <item>Senior</item>

@@ -9,10 +9,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.henallux.smartcities.DAO.UserAppDAO;
 import com.henallux.smartcities.R;
-import com.henallux.smartcities.exception.FormException;
 import com.henallux.smartcities.model.UserApp;
 import com.henallux.smartcities.model.UserConnected;
 import com.henallux.smartcities.service.Business;
@@ -20,7 +18,7 @@ import com.henallux.smartcities.service.Business;
 public class ModifProfilActivity extends AppCompatActivity
 {
     private UserConnected userConnected;
-    private Button btnSave;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -29,7 +27,7 @@ public class ModifProfilActivity extends AppCompatActivity
         setContentView(R.layout.activity_modif_profil);
         userConnected = new UserConnected();
         setModifyContent();
-        btnSave = (Button) findViewById(R.id.save_button);
+        Button btnSave = (Button) findViewById(R.id.save_button);
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

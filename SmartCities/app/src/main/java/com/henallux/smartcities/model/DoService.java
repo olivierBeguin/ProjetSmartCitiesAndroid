@@ -3,9 +3,6 @@ package com.henallux.smartcities.model;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * Created by olivierbeguin on 22/11/16.
- */
 
 public class DoService implements Serializable
 {

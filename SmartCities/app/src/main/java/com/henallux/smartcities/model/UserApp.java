@@ -1,11 +1,6 @@
 package com.henallux.smartcities.model;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
-
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class UserApp implements Serializable

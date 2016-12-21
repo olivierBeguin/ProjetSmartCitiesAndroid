@@ -1,8 +1,5 @@
 package com.henallux.smartcities.exception;
 
-/**
- * Created by olivierbeguin on 14/12/16.
- */
 
 public class RechercheServiceException extends Exception
 {

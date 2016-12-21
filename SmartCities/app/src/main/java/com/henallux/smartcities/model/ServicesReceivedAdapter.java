@@ -8,14 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
-
 import com.henallux.smartcities.R;
-
 import java.util.ArrayList;
 
-/**
- * Created by olivierbeguin on 15/12/16.
- */
 
 public class ServicesReceivedAdapter extends ArrayAdapter
 {

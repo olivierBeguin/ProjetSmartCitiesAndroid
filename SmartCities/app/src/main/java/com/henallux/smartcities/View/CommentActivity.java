@@ -8,20 +8,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Toast;
-
 import com.henallux.smartcities.DAO.DoServiceDAO;
 import com.henallux.smartcities.R;
 import com.henallux.smartcities.model.DoService;
-import com.henallux.smartcities.model.Service;
-import com.henallux.smartcities.model.UserApp;
 import com.henallux.smartcities.model.UserConnected;
 
-import java.util.ArrayList;
 
 public class CommentActivity extends LayoutActivity {
     private DoService doServiceToAddComment;
-    private EditText ownerService, labelService;
-    private Button btn_add_comment;
     private UserConnected userConnected;
 
     @Override
@@ -29,11 +23,11 @@ public class CommentActivity extends LayoutActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comment);
         doServiceToAddComment = (DoService) getIntent().getSerializableExtra("doService");
-        ownerService = (EditText) findViewById(R.id.ownerServiceEditText);
-        labelService = (EditText) findViewById(R.id.serviceEditText);
+        EditText ownerService = (EditText) findViewById(R.id.ownerServiceEditText);
+        EditText labelService = (EditText) findViewById(R.id.serviceEditText);
         ownerService.setText(doServiceToAddComment.getUserDoService().getFirstName() + " " + doServiceToAddComment.getUserDoService().getLastName());
         labelService.setText(doServiceToAddComment.getServiceDone().getLabelService());
-        btn_add_comment = (Button) findViewById(R.id.validateButtonComment);
+        Button btn_add_comment = (Button) findViewById(R.id.validateButtonComment);
         btn_add_comment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -1,16 +1,12 @@
 package com.henallux.smartcities.service;
 
 import android.app.Activity;
-import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import com.henallux.smartcities.R;
 import com.henallux.smartcities.exception.FormException;
 import com.henallux.smartcities.exception.RechercheServiceException;
-import com.henallux.smartcities.model.CategoryService;
 import com.henallux.smartcities.model.DoService;
-import com.henallux.smartcities.model.DoServicesAdapter;
 import com.henallux.smartcities.model.Service;
 import com.henallux.smartcities.model.ServicesAdapter;
 import com.henallux.smartcities.model.ServicesReceivedAdapter;
@@ -18,10 +14,6 @@ import com.henallux.smartcities.model.UserApp;
 
 import java.util.ArrayList;
 
-
-/**
- * Created by olivierbeguin on 6/12/16.
- */
 
 public class Business
 {
@@ -65,16 +57,18 @@ public class Business
     public static Service rechercheService(ListView listView, ArrayList<Service> services) throws RechercheServiceException
     {
         int pos = ((ServicesAdapter)listView.getAdapter()).getPositionChecked();
-        String label;
-        label = String.valueOf(((TextView) listView.getChildAt(pos).findViewById(R.id.label_list)).getText());
-
-
-        for (Service service : services)
+        if(pos != -1)
         {
-            if(service.getLabelService().equals(label))
-                return service;
+            String label;
+            label = String.valueOf(((TextView) listView.getChildAt(pos).findViewById(R.id.label_list)).getText());
+
+
+            for (Service service : services) {
+                if (service.getLabelService().equals(label))
+                    return service;
+            }
         }
-        throw new RechercheServiceException("Contacter Louis");
+        throw new RechercheServiceException("Veuillez selectionner un service svp");
     }
 
     public static DoService rechercheDoService(ListView listView, ArrayList<DoService> doServices) throws RechercheServiceException
@@ -88,7 +82,7 @@ public class Business
             if(doService.getServiceDone().getLabelService().equals(label))
                 return doService;
         }
-        throw new RechercheServiceException("Contacter Louis");
+        throw new RechercheServiceException("Veuillez selectionner un service svp");
     }
 
     public static Boolean compareTwoUserAndAddDifference(UserApp userApp, UserApp userModif)

@@ -1,24 +1,41 @@
 package com.henallux.smartcities.exception;
 
-/**
- * Created by olivierbeguin on 6/12/16.
- */
 
 public class ConnectionException extends Exception
 {
+
     private boolean errorEntry;
+    private String message;
 
     public ConnectionException(boolean errorEntry)
     {
         this.errorEntry = errorEntry;
     }
+    public ConnectionException(String message)
+    {
+        this.message = message;
+    }
+
+
 
     @Override
     public String getMessage()
     {
-        if (errorEntry == false)
-            return "Nous ne parvenons pas à effectuer la connection. Etes-vous bien connecté à Internet?";
+        if (!errorEntry)
+        {
+            return "La connexion avec la base de données a un problème. Veuillez réessayer plus tard.";
+        }
         else
-            return "Vos identifiants sont incorrects";
+        {
+            if(message.isEmpty())
+            {
+                return "Vos identifiants sont incorrects";
+            }
+            else
+            {
+                return message;
+            }
+        }
+
     }
 }

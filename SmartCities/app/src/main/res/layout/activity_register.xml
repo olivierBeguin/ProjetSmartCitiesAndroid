@@ -276,6 +276,16 @@
             android:layout_centerHorizontal="true"
             style="@style/btnColor"/>
 
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar_register"
+            android:progressDrawable="@drawable/circular_progress_bar"
+            android:indeterminate="false"
+            android:layout_below="@+id/confirm_password"
+            android:layout_centerHorizontal="true" />
+
+
     </RelativeLayout>
 
 

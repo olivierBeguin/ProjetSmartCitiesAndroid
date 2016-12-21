@@ -4,19 +4,35 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
-
 import com.henallux.smartcities.R;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-/**
- * Created by olivierbeguin on 5/12/16.
- */
 
 public class UserConnected
 {
     private UserApp userConnected;
+
+    public void resetUserConnected(Activity activity)
+    {
+        SharedPreferences sharedPreferences = activity.getSharedPreferences("myPref", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("Firstname", "");
+        editor.putString("Lastname", "");
+        editor.putString("Password", "");
+        editor.putString("Email", "");
+        editor.putString("PhoneNumber", "");
+        editor.putString("Street", "");
+        editor.putString("City", "");
+        editor.putString("Country", "");
+        editor.putString("Category", "");
+        editor.putString("DateInscription", "");
+        editor.putString("PostalCode", "");
+        editor.putString("Number", "");
+        editor.putInt("SumServiceDone", 0);
+        editor.putInt("SumServiceGiven", 0);
+        editor.commit();
+    }
 
     public void setUserConnected(Activity activity, UserApp userApp)
     {
@@ -52,6 +68,14 @@ public class UserConnected
             Log.i("Test", e.getMessage());
         }
         return userConnected;
+    }
+
+    public void resetToken(Activity activity)
+    {
+        SharedPreferences sharedPreferences = activity.getSharedPreferences(String.valueOf(R.string.myPref), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("Token", "");
+        editor.commit();
     }
 
     public String getToken(Activity activity)

@@ -1,13 +1,10 @@
 package com.henallux.smartcities.view;
 
-import android.content.Context;
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +28,6 @@ import java.util.Date;
 public class NeedServiceActivity extends Fragment {
     public static final String ARG_PAGE = "ARG_PAGE";
 
-    private int mPage;
     private UserConnected userConnected;
 
     public static NeedServiceActivity newInstance(int page) {
@@ -45,7 +41,7 @@ public class NeedServiceActivity extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPage = getArguments().getInt(ARG_PAGE);
+        int mPage = getArguments().getInt(ARG_PAGE);
         userConnected = new UserConnected();
         String token = userConnected.getToken(getActivity());
         new LoadCategory().execute(token);
@@ -56,14 +52,13 @@ public class NeedServiceActivity extends Fragment {
     // Set the associated text for the title
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_need_service, container, false);
-        return view;
+        return inflater.inflate(R.layout.activity_need_service, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Button btnAddService = (Button) getActivity().findViewById(R.id.btn_service);
+        Button btnAddService = (Button) getActivity().findViewById(R.id.btn_add_service);
         btnAddService.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {actionBtnSend();}
@@ -105,8 +100,12 @@ public class NeedServiceActivity extends Fragment {
         @Override
         protected void onPostExecute(Boolean success)
         {
-            if (!success)
+            if (!success && exceptionToBeThrow != null)
                 Toast.makeText(getActivity(), exceptionToBeThrow.getMessage(), Toast.LENGTH_LONG).show();
+            else
+            {
+                serviceAccepted();
+            }
         }
     }
 
@@ -156,5 +155,16 @@ public class NeedServiceActivity extends Fragment {
                 spinner.setAdapter(adapter);
             }
         }
+    }
+
+    private void serviceAccepted()
+    {
+        Toast.makeText(getActivity(), "Service envoyé", Toast.LENGTH_LONG).show();
+        EditText labelService = (EditText) getActivity().findViewById(R.id.libelle_service_edit_text);
+        labelService.setText("");
+        EditText descriptionService = (EditText) getActivity().findViewById(R.id.description_service_edit_text);
+        descriptionService.setText("");
+        Intent intent = new Intent(getActivity(), ServicesActivity.class);
+        startActivity(intent);
     }
 }
